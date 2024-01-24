@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from 'app/hooks';
+import React from 'react';
 import { styled } from '@mui/material/styles';
 import {
   Dialog,
@@ -12,7 +11,6 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import Uploader from 'components/Uploader';
-import Loader from 'components/Loader';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {

@@ -7,12 +7,12 @@ const ContentContainer = styled(Container)`
   min-height: calc(100vh - 200px);
 `;
 
-interface PageContentProp {
+interface IPageContentProps {
   style?: object;
   children?: any;
 }
 
-export default function PageContent(props: PageContentProp) {
+export default function PageContent(props: IPageContentProps) {
   const { style, children } = props;
   return (
     <ContentContainer disableGutters={true} style={style} maxWidth={false}>

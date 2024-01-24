@@ -34,12 +34,12 @@ const CaptionTypography = styled(Typography)`
   cursor: pointer;
 `;
 
-interface PreviewCardProp {
+interface IPreviewCardProps {
   image: any;
   title: string;
   handleOpenDetail: any;
 }
-export default function PreviewCard(props: PreviewCardProp) {
+export default function PreviewCard(props: IPreviewCardProps) {
   const { image, title, handleOpenDetail } = props;
 
   return (

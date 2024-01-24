@@ -6,12 +6,12 @@ const SectionContainer = styled(Container)`
   padding: 16px;
 `;
 
-interface SectionProp {
+interface ISectionProps {
   style?: object;
   children?: any;
 }
 
-export default function Section(props: SectionProp) {
+export default function Section(props: ISectionProps) {
   const { style, children } = props;
   return (
     <SectionContainer style={style} maxWidth={false}>

@@ -28,11 +28,11 @@ const MenuIcon = styled.span`
   align-items: center;
 `;
 
-interface MenuProp {
+interface IMenuProps {
   items: { title: string; link: string; id: string; icon: any }[];
 }
 
-export default function Menu(props: MenuProp) {
+export default function Menu(props: IMenuProps) {
   const { items } = props;
 
   const MenuLinks = items?.map((item) => (

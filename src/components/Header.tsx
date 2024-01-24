@@ -21,7 +21,9 @@ export default function Header() {
     <Section style={{ backgroundColor: theme.palette?.background?.header }}>
       <Container maxWidth='lg'>
         <HeaderContent>
-          <Logo title={SITE.title} width={SITE.logoWidth} />
+          <a title={SITE.title} href='/'>
+            <Logo title={SITE.title} width={SITE.logoWidth} />
+          </a>
           <Menu items={MAIN_MENU} />
           <GiphyUploadButton />
         </HeaderContent>

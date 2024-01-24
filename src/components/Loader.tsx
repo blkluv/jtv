@@ -10,11 +10,11 @@ const LoaderWrapper = styled.div`
   width: 100%;
   color: #fff;
 `;
-interface LoaderProp {
+interface ILoaderProps {
   style?: any;
 }
 
-export default function Loader(props: LoaderProp) {
+export default function Loader(props: ILoaderProps) {
   const { style } = props;
   return (
     <LoaderWrapper style={style}>

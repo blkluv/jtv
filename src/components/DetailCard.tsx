@@ -36,13 +36,13 @@ const DetailCardContent = styled(CardContent)`
   }
 `;
 
-interface DetailCardProp {
+interface IDetailCardProps {
   image: any;
   title: string;
   user: any;
   rating: string;
 }
-export default function DetailCard(props: DetailCardProp) {
+export default function DetailCard(props: IDetailCardProps) {
   const { image, user, rating } = props;
 
   return (

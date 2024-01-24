@@ -51,11 +51,11 @@ const getIconByRating = (rating: string) => {
   }
 };
 
-interface RatingProp {
+interface IRatingProps {
   value: string;
 }
 
-export default function Rating(props: RatingProp) {
+export default function Rating(props: IRatingProps) {
   const { value } = props;
 
   return (

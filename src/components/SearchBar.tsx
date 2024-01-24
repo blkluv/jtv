@@ -15,10 +15,10 @@ const SearchBarWrapper = styled(Stack)`
   }
 `;
 
-interface SearchBarProp {
+interface ISearchBarProps {
   searchCallback: any;
 }
-export default function SearchBar(props: SearchBarProp) {
+export default function SearchBar(props: ISearchBarProps) {
   const { searchCallback } = props;
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

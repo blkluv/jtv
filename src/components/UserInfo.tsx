@@ -17,12 +17,12 @@ const Username = styled(Typography)`
   font-weight: bold;
 `;
 
-interface UserInfoProp {
+interface IUserInfoProps {
   avatar: string;
   name: string;
 }
 
-export default function UserInfo(props: UserInfoProp) {
+export default function UserInfo(props: IUserInfoProps) {
   const { avatar, name } = props;
 
   return (

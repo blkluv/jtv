@@ -18,10 +18,10 @@ const FooterContent = styled.div`
   min-height: 128px;
 `;
 
-interface FooterLinksProp {
+interface IFooterLinksProps {
   items: { id: string; title: string; link: string }[];
 }
-const FooterLinks = (props: FooterLinksProp) => {
+const FooterLinks = (props: IFooterLinksProps) => {
   const { items } = props;
 
   return (
