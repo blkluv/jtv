@@ -1,20 +1,28 @@
 # Getting Started with PI Giphy Application
 
-**Demo Site:** [https://master.d2z6qqo23td953.amplifyapp.com/](https://master.d2z6qqo23td953.amplifyapp.com/)
+**Demo Site:** [https://main.d2i6fnznykg2rj.amplifyapp.com/](https://main.d2i6fnznykg2rj.amplifyapp.com/)
 
-**GitHub repository:** [https://github.com/blakenguyenvn/giphy-trending-application](https://github.com/blakenguyenvn/giphy-trending-application)
+**GitHub repository:** [https://github.com/blakenguyenvn/trending-giphy](https://github.com/blakenguyenvn/trending-giphy)
 
 **How long did you spend on the coding test?**
+
 → About 12 hours.
 
 **What would you add to your solution if you had more time?**
-→ I’m going to complete a NodeJS server to handle upload file from client to S3.
-→ Write more Unit Test for:
+
+→ I will add more features:
+
+- Share Gif
+- Embed Gif
+- Upload Gif (Need to research solution from Giphy)
+
+→ and write more Unit Test:
 
 - Spec for Reducers in State Management.
-- Component rendering.
+- Spec for Component rendering.
 - Integration test for API.
-  → Improve styling and UI components: add skeleton for Gifs loading, Detail dialog.
+
+→ and improve styling and UI components: add skeleton for Gifs loading, Detail dialog.
 
 ## Available Scripts
 
