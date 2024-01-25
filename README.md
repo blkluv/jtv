@@ -4,9 +4,26 @@
 
 **GitHub repository:** [https://github.com/blakenguyenvn/trending-giphy](https://github.com/blakenguyenvn/trending-giphy)
 
+**Features**
+
+- List of trending GIFs on Giphy with 3 categories: Gift, Videos and Stickers.
+- Search gifs by text.
+- Scrolling to load more gifs data.
+- Click to open Gif detail via dialog.
+
+**TechStack**
+
+- ReactJS with Typescript.
+- Redux and Redux Toolkit for state management.
+- Jest for unit test.
+- Styling with StyledComponent and SCSS.
+- Material UI
+- AWS Amplify for deployment.
+- Github.
+
 **How long did you spend on the coding test?**
 
-→ About 12 hours.
+→ About 10 hours with high focus.
 
 **What would you add to your solution if you had more time?**
 

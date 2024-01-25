@@ -3,6 +3,7 @@ import HomePage from 'pages/home/HomePage';
 import VideosPage from 'pages/videos/VideosPage';
 import StickersPage from 'pages/stickers/StickersPage';
 import GifsPage from 'pages/gifs/GifsPage';
+import PageNotFound from 'pages/404/PageNotFound';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,8 @@ const router = createBrowserRouter([
     element: <StickersPage />,
   },
   {
-    path: '/404',
-    element: 'Page not found',
+    path: '*',
+    element: <PageNotFound />,
   },
 ]);
 

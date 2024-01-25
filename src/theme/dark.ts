@@ -27,8 +27,8 @@ const theme = createTheme({
       white: '#ffffff',
     },
     primary: {
-      light: 'rgb(97, 87, 255)',
-      main: 'rgb(97, 87, 255)',
+      light: '#f472b6',
+      main: '#f472b6',
       darker: '#ea6c00',
       contrastText: '#ffffff',
     },
