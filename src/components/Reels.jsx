@@ -73,7 +73,7 @@ const Reel = ({
         <div className='mb-4 text-white'>
           <h3 className='text-lg font-bold'>🎧 {creator}</h3>
           <p className='text-sm opacity-90'>{getPriceDisplay()}</p>
-          <p className='mt-1 text-xs opacity-80'>💿 {cryptoAddy}</p>
+          <p className='mt-1 text-xs opacity-80'>🪙 {cryptoAddy}</p>
         </div>
 
         <div className='flex flex-wrap gap-2 mb-4'>
