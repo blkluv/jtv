@@ -1,9 +1,9 @@
-import React from "react";
-import Reels from "./components/Reels";
+import React from 'react';
+import Reels from './components/Reels';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Reels />
     </div>
   );
