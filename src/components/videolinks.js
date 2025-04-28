@@ -1,11 +1,11 @@
 const videolinks = [
   {
     id: 1,
-    src: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    creator: 'DJ LUV 😎',
+    src: '"https://ipfs.io/ipfs/bafybeiafetfkj75ey5pyuxpvnbfjt6agsp4a2u7wy5py7b2jvvgio3d7em",',
+    creator: 'DJ Hyped Up Reese',
     cryptoAddy: '0xJerseyClub...',
     tags: ['🔥 Hot Track', '💿 for sale', 'Jersey Club'],
-    description: '🔥 New Jersey Club banger dropping soon! Support your artist with crypto tips!',
+    description: '🔥 Jersey Club SZA Remix',
   },
   {
     id: 2,
