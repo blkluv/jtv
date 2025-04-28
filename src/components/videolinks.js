@@ -1,7 +1,7 @@
 const videolinks = [
   {
     id: 1,
-    src: '"https://ipfs.io/ipfs/bafybeiafetfkj75ey5pyuxpvnbfjt6agsp4a2u7wy5py7b2jvvgio3d7em",',
+    src: 'https://ipfs.io/ipfs/bafybeiafetfkj75ey5pyuxpvnbfjt6agsp4a2u7wy5py7b2jvvgio3d7em',
     creator: 'DJ Hyped Up Reese',
     cryptoAddy: '0xJerseyClub...',
     tags: ['🔥 Hot Track', '💿 for sale', 'Jersey Club'],
