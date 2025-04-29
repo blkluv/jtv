@@ -41,6 +41,7 @@
   },
   "resolutions": {
     "typescript": "4.9.5",
+    "react-scripts": "5.0.1",
     "@typescript-eslint/parser": "5.62.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "ajv": "8.12.0",
@@ -53,7 +54,13 @@
       "react-app/jest"
     ],
     "rules": {
-      "quotes": ["error", "double", { "avoidEscape": true }]
+      "quotes": [
+        "error",
+        "double",
+        {
+          "avoidEscape": true
+        }
+      ]
     }
   },
   "browserslist": {
