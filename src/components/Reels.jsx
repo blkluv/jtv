@@ -166,8 +166,7 @@ const Reel = ({
       {showPurchase && (
         <div className='absolute inset-0 flex items-center justify-center p-6 bg-black/90'>
           <div className='w-full max-w-md p-6 bg-gray-900 rounded-xl'>
-            <h2 className='mb-4 text-2xl font-bold text-white'>🛒 Purchase {creator}'s Track</h2>
-            
+            <h2 className='mb-4 text-2xl font-bold text-white'>🛒 Purchase {creator}&apos;s Track</h2>            
             <div className='mb-6'>
               <div 
                 id={`connect-button-${id}`}
