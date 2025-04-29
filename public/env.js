@@ -1,5 +1,6 @@
 window.env = {
   "NVM_INC": "/Users/thewizardofhahz/.nvm/versions/node/v20.18.3/include/node",
+  "npm_config_legacy_peer_deps": "true",
   "TERM_PROGRAM": "vscode",
   "rvm_bin_path": "/Users/thewizardofhahz/.rvm/bin",
   "NODE": "/usr/local/bin/node",
@@ -39,7 +40,7 @@ window.env = {
   "PWD": "/Users/thewizardofhahz/jtv",
   "npm_lifecycle_event": "build",
   "EDITOR": "vi",
-  "npm_package_name": "instagram",
+  "npm_package_name": "jerseyfm-tv",
   "LANG": "en_US.UTF-8",
   "npm_config_npm_version": "10.9.2",
   "VSCODE_GIT_ASKPASS_EXTRA_ARGS": "",
