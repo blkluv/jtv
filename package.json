@@ -22,7 +22,8 @@
     "start": "react-dotenv && react-scripts start",
     "build": "react-dotenv && react-scripts build",
     "serve": "react-dotenv && serve build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json}\""
   },
   "eslintConfig": {
     "extends": [
@@ -43,12 +44,32 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/react": "^17.0.52",
+    "@types/react-dom": "^17.0.18",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
     "autoprefixer": "^10.4.20",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "eslint-plugin-react": "^7.37.5",
     "postcss": "^8.5.1",
-    "tailwindcss": "^3.4.17"
+    "prettier": "^3.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^4.9.5"
+  },
+  "prettier": {
+    "semi": true,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "jsxSingleQuote": false,
+    "bracketSpacing": true
   },
   "description": "demo app link: https://insta-reels-one.vercel.app/",
   "main": "tailwind.config.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
 }
