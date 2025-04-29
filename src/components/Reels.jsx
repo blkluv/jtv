@@ -2,17 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import throttle from 'lodash/throttle';
 import videolinks from './videolinks';
 import PropTypes from 'prop-types';
-import {
-  FaShareAlt,
-  FaHeart,
-  FaRegHeart,
-  FaComment,
-  FaMusic,
-  FaInfoCircle,
-} from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
-// Reel Component
 const Reel = ({
   src,
   isPlaying,
@@ -31,6 +22,7 @@ const Reel = ({
   const videoRef = useRef(null);
   const [animateHeart, setAnimateHeart] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [showPurchase, setShowPurchase] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -47,13 +39,12 @@ const Reel = ({
     setTimeout(() => setAnimateHeart(false), 1000);
   };
 
-  const toggleInfo = () => {
-    setShowDescription((prev) => !prev);
-  };
+  const toggleInfo = () => setShowDescription(prev => !prev);
+  const togglePurchase = () => setShowPurchase(prev => !prev);
 
   const getPriceDisplay = () => {
     if (typeof price === 'string') return price;
-    if (price && price.display) return price.display;
+    if (price?.display) return price.display;
     return 'Price not available';
   };
 
@@ -69,6 +60,7 @@ const Reel = ({
         onClick={toggleMute}
       />
 
+      {/* Bottom Info Bar */}
       <div className='absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent'>
         <div className='mb-4 text-white'>
           <h3 className='text-lg font-bold'>🎧 {creator}</h3>
@@ -78,55 +70,61 @@ const Reel = ({
 
         <div className='flex flex-wrap gap-2 mb-4'>
           {tags.map((tag, index) => (
-            <span
-              key={index}
-              className='px-2 py-1 text-xs text-white rounded-full bg-purple-500/50'
-            >
-              {tag.includes('Location') ? '💿 for sale' : tag}
+            <span key={index} className='px-2 py-1 text-xs text-white rounded-full bg-purple-500/50'>
+              {tag}
             </span>
           ))}
         </div>
+
+        <button 
+          onClick={togglePurchase}
+          className='px-4 py-2 text-xs font-bold text-white transition-all rounded-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600'
+        >
+          🛒 BUY NFT
+        </button>
       </div>
 
+      {/* Right Action Buttons */}
       <div className='absolute flex flex-col items-center gap-6 right-4 bottom-24'>
         <div className='flex flex-col items-center'>
           <div className='flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500'>
-            <span className='text-xs font-bold text-white'>{id}</span>
+            <span className='text-xs font-bold text-white'>#{id}</span>
           </div>
         </div>
 
         <div className='flex flex-col items-center'>
-          <button onClick={handleLikeClick} className='text-3xl text-white'>
-            {isLiked ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
+          <button onClick={handleLikeClick} className='text-3xl transition-transform hover:scale-110'>
+            {isLiked ? '❤️' : '🤍'}
           </button>
           <span className='mt-1 text-xs text-white'>24.5K</span>
         </div>
 
         <div className='flex flex-col items-center'>
-          <button className='text-3xl text-white'>
-            <FaComment />
+          <button className='text-3xl transition-transform hover:scale-110'>
+            💬
           </button>
           <span className='mt-1 text-xs text-white'>1.2K</span>
         </div>
 
         <div className='flex flex-col items-center'>
-          <button onClick={onShare} className='text-3xl text-white'>
-            <FaShareAlt />
+          <button onClick={onShare} className='text-3xl transition-transform hover:scale-110'>
+            ↗️
           </button>
           <span className='mt-1 text-xs text-white'>Share</span>
         </div>
 
         <div className='flex flex-col items-center'>
-          <button onClick={toggleInfo} className='text-3xl text-white'>
-            <FaInfoCircle />
+          <button onClick={toggleInfo} className='text-3xl transition-transform hover:scale-110'>
+            ℹ️
           </button>
         </div>
 
         <div className='flex items-center justify-center w-10 h-10 mt-2 border rounded-full border-white/30'>
-          <FaMusic className='text-sm text-white' />
+          <span className='text-sm'>🎵</span>
         </div>
       </div>
 
+      {/* Animated Heart */}
       {animateHeart && (
         <motion.div
           className='absolute inset-0 flex items-center justify-center pointer-events-none'
@@ -134,10 +132,11 @@ const Reel = ({
           animate={{ scale: 3, opacity: 0 }}
           transition={{ duration: 1 }}
         >
-          <FaHeart className='text-6xl text-red-500' />
+          <span className='text-6xl'>❤️</span>
         </motion.div>
       )}
 
+      {/* Description Modal */}
       {showDescription && (
         <div className='absolute inset-0 p-6 overflow-y-auto bg-black/80'>
           <div className='text-white'>
@@ -145,11 +144,11 @@ const Reel = ({
             <div className='mb-6 text-sm whitespace-pre-line'>{description}</div>
             <div className='grid grid-cols-2 gap-4 mb-6'>
               <div>
-                <h3 className='font-bold'>Price</h3>
+                <h3 className='font-bold'>💰 Price</h3>
                 <p>{getPriceDisplay()}</p>
               </div>
               <div>
-                <h3 className='font-bold'>Wallet</h3>
+                <h3 className='font-bold'>👛 Wallet</h3>
                 <p>{cryptoAddy}</p>
               </div>
             </div>
@@ -157,8 +156,45 @@ const Reel = ({
               onClick={toggleInfo}
               className='w-full px-4 py-2 font-bold text-white bg-purple-500 rounded-full hover:bg-purple-600'
             >
-              Close
+              ✕ Close
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* NFT Purchase Modal */}
+      {showPurchase && (
+        <div className='absolute inset-0 flex items-center justify-center p-6 bg-black/90'>
+          <div className='w-full max-w-md p-6 bg-gray-900 rounded-xl'>
+            <h2 className='mb-4 text-2xl font-bold text-white'>🛒 Purchase {creator}'s Track</h2>
+            
+            <div className='mb-6'>
+              <div 
+                id={`connect-button-${id}`}
+                data-widget="ConnectButton"
+                data-client-id="e9bae73377d43e42aea12c0d07474163"
+                data-theme="dark"
+                data-chains="8453,1,137"
+                data-locale="en_US"
+                className='mb-4'
+              ></div>
+
+              <div className='p-4 mb-4 text-sm text-white bg-gray-800 rounded-lg'>
+                <p className='font-bold'>✨ NFT Includes:</p>
+                <ul className='mt-2 ml-4 list-disc'>
+                  {description.split('\n').filter(line => line.trim()).map((line, i) => (
+                    <li key={i}>{line.replace(/^-/, '').trim()}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <button
+                onClick={togglePurchase}
+                className='w-full px-4 py-2 mt-4 font-bold text-white bg-gray-700 rounded-full hover:bg-gray-600'
+              >
+                ✕ Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -166,7 +202,6 @@ const Reel = ({
   );
 };
 
-// PropTypes for Reel component
 Reel.propTypes = {
   src: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
@@ -175,45 +210,37 @@ Reel.propTypes = {
   onLike: PropTypes.func.isRequired,
   onShare: PropTypes.func.isRequired,
   isLiked: PropTypes.bool,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   tags: PropTypes.array.isRequired,
   description: PropTypes.string,
   creator: PropTypes.string,
   price: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.shape({
-      display: PropTypes.string,
-    }),
+    PropTypes.shape({ display: PropTypes.string })
   ]),
   cryptoAddy: PropTypes.string,
 };
 
-// Reels Component
 const Reels = () => {
   const [currentReelIndex, setCurrentReelIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
   const [likedVideos, setLikedVideos] = useState({});
   const containerRef = useRef(null);
 
-  const toggleMute = () => setIsMuted((prev) => !prev);
+  const toggleMute = () => setIsMuted(prev => !prev);
 
   const handleLike = (id) => {
-    setLikedVideos((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
+    setLikedVideos(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleShare = (id) => {
     const shareUrl = `https://tv.jersey.fm/video/${id}`;
     if (navigator.share) {
-      navigator
-        .share({
-          title: 'Check out this Jersey Club track!',
-          text: 'Dope Jersey Club content you need to hear!',
-          url: shareUrl,
-        })
-        .catch((err) => console.error('Share failed', err));
+      navigator.share({
+        title: 'Check out this Jersey Club track!',
+        text: 'Dope Jersey Club content you need to hear!',
+        url: shareUrl,
+      }).catch(console.error);
     } else {
       navigator.clipboard.writeText(shareUrl).then(() => {
         alert('Link copied to clipboard!');
@@ -227,10 +254,7 @@ const Reels = () => {
     const scrollPosition = container.scrollTop;
     const windowHeight = container.clientHeight;
     const currentIndex = Math.round(scrollPosition / windowHeight);
-
-    if (currentIndex !== currentReelIndex) {
-      setCurrentReelIndex(currentIndex);
-    }
+    if (currentIndex !== currentReelIndex) setCurrentReelIndex(currentIndex);
   }, 200);
 
   useEffect(() => {
@@ -260,7 +284,7 @@ const Reels = () => {
             tags={reel.tags}
             description={reel.description}
             creator={reel.creator}
-            price={reel.price}
+            price={reel.price || 'Free'}
             cryptoAddy={reel.cryptoAddy}
           />
         </div>
