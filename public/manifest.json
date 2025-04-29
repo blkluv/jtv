@@ -1,7 +1,6 @@
 {
-  "short_name": "JERSEY.FM",
-  "name": "JERSEY.FM TV | Brick City Beats",
-  "description": "The home of Jersey Club music NFTs and Web3 vibes",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,67 +8,18 @@
       "type": "image/x-icon"
     },
     {
-      "src": "jersey-icon-192.png",
+      "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
+      "sizes": "192x192"
     },
     {
-      "src": "jersey-icon-512.png",
+      "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "jersey-splash.png",
-      "type": "image/png",
-      "sizes": "1024x1024"
+      "sizes": "512x512"
     }
   ],
-  "start_url": "/?source=pwa",
-  "scope": "/",
+  "start_url": ".",
   "display": "standalone",
-  "theme_color": "#9c27b0", // Jersey purple
-  "background_color": "#000000", // Black
-  "orientation": "portrait",
-  "categories": ["music", "entertainment", "web3"],
-  "screenshots": [
-    {
-      "src": "screenshot1.png",
-      "type": "image/png",
-      "sizes": "1280x720"
-    }
-  ],
-  "related_applications": [
-    {
-      "platform": "webapp",
-      "url": "https://tv.jersey.fm/manifest.json"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "Latest Drops",
-      "short_name": "Drops",
-      "description": "View newest Jersey Club NFTs",
-      "url": "/drops",
-      "icons": [
-        {
-          "src": "icon-drop.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Top Creators",
-      "short_name": "Creators",
-      "description": "Browse Jersey Club artists",
-      "url": "/creators",
-      "icons": [
-        {
-          "src": "icon-creator.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ]
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }

@@ -5,55 +5,40 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="JERSEY.FM TV" content="Jersey Club Musik Industry" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>JERSEY.FM TV</title>
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
     <script id="react-dotenv" src="./env.js"></script>
-    
-    <!-- Add critical CSS to prevent FOUC (Flash of Unstyled Content) -->
-    <style>
-      body {
-        margin: 0;
-        background-color: #000000; /* Black background by default */
-        color: #ffffff; /* White text */
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      }
-      #root {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-      /* Debugging border (remove in production) */
-      .debug-border {
-        border: 1px solid red !important;
-      }
-    </style>
   </head>
   <body>
-    <!-- Load thirdweb script (deferred to avoid render blocking) -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@dappify/thirdweb@latest/dist/widgets.js"
-      defer
-    ></script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-    <!-- Enhanced noscript fallback -->
-    <noscript>
-      <div style="padding: 2rem; text-align: center;">
-        <h1>JERSEY.FM TV</h1>
-        <p>Please enable JavaScript to view this application.</p>
-      </div>
-    </noscript>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-    <!-- Root container with debug class (remove later) -->
-    <div id="root" class="debug-border">
-      <!-- Optional loading placeholder -->
-      <div style="padding: 2rem; text-align: center;">
-        Loading JERSEY.FM TV...
-      </div>
-    </div>
-
-    <!-- Production: React will replace the root content -->
-    <!-- Development: Ensure index.js mounts correctly -->
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
   </body>
 </html>
