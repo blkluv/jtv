@@ -1,5 +1,5 @@
 {
-  "name": "instagram",
+  "name": "jerseyfm-tv",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,7 +17,7 @@
     "react-icons": "^5.2.1",
     "react-intersection-observer": "^9.15.0",
     "react-router-dom": "^6.26.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.2",
     "styled-components": "^6.1.12",
     "web-vitals": "^2.1.4"
   },
@@ -25,7 +25,13 @@
     "start": "react-dotenv && react-scripts start",
     "build": "react-dotenv && react-scripts build",
     "serve": "react-dotenv && serve build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "typescript": "5.0.4",
+    "@typescript-eslint/parser": "5.62.0",
+    "@typescript-eslint/eslint-plugin": "5.62.0"
   },
   "eslintConfig": {
     "extends": [
@@ -51,12 +57,13 @@
     "autoprefixer": "^10.4.20",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",
+    "npm-force-resolutions": "^0.0.3",
     "postcss": "^8.5.1",
     "prettier": "^3.5.3",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.8.3"
+    "typescript": "^5.0.4"
   },
-  "description": "demo app link: https://insta-reels-one.vercel.app/",
+  "description": "demo app link: https://tv.jersey.fm",
   "main": "tailwind.config.js",
   "author": "",
   "license": "ISC"
