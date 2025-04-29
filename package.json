@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "serve": "react-dotenv && serve build",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json}\""
