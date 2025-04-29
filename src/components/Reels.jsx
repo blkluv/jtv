@@ -3,6 +3,7 @@ import throttle from 'lodash/throttle';
 import videolinks from './videolinks';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
+import { useContract, useBuyNow } from "@thirdweb-dev/react";
 
 const Reel = ({
   src,
@@ -24,6 +25,9 @@ const Reel = ({
   const [showDescription, setShowDescription] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
 
+  const { contract } = useContract("0x7FC8e27d971d7B2eA951FCe62192F6B76dD319B7");
+  const { mutate: buyNow, isLoading } = useBuyNow(contract);
+
   useEffect(() => {
     const video = videoRef.current;
     if (isPlaying) {
@@ -41,6 +45,21 @@ const Reel = ({
 
   const toggleInfo = () => setShowDescription(prev => !prev);
   const togglePurchase = () => setShowPurchase(prev => !prev);
+
+  const handlePurchase = async () => {
+    try {
+      await buyNow({
+        id: id,
+        buyAmount: 1,
+        type: "nft",
+      });
+      alert('Purchase successful!');
+      setShowPurchase(false);
+    } catch (error) {
+      console.error('Purchase failed:', error);
+      alert('Purchase failed. See console for details.');
+    }
+  };
 
   const getPriceDisplay = () => {
     if (typeof price === 'string') return price;
@@ -166,12 +185,13 @@ const Reel = ({
       {showPurchase && (
         <div className='absolute inset-0 flex items-center justify-center p-6 bg-black/90'>
           <div className='w-full max-w-md p-6 bg-gray-900 rounded-xl'>
-            <h2 className='mb-4 text-2xl font-bold text-white'>🛒 Purchase {creator}&apos;s Track</h2>            
+            <h2 className='mb-4 text-2xl font-bold text-white'>{`🛒 Purchase ${creator}'s Track`}</h2>
+            
             <div className='mb-6'>
               <div 
                 id={`connect-button-${id}`}
                 data-widget="ConnectButton"
-                data-client-id="e9bae73377d43e42aea12c0d07474163"
+                data-client-id="06bcfb42f1eeb14f3bdb12f16703ebb8"
                 data-theme="dark"
                 data-chains="8453,1,137"
                 data-locale="en_US"
@@ -186,6 +206,14 @@ const Reel = ({
                   ))}
                 </ul>
               </div>
+
+              <button
+                onClick={handlePurchase}
+                disabled={isLoading}
+                className='w-full px-4 py-2 font-bold text-white bg-purple-500 rounded-full hover:bg-purple-600 disabled:opacity-50'
+              >
+                {isLoading ? 'Processing...' : 'Confirm Purchase'}
+              </button>
 
               <button
                 onClick={togglePurchase}
