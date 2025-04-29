@@ -1,6 +1,6 @@
 import React from 'react';
-import { ThirdwebProvider } from "@thirdweb-dev/react";
-import { Base } from "@thirdweb-dev/chains";
+import { ThirdwebProvider } from '@thirdweb-dev/react';
+import { Base } from '@thirdweb-dev/chains';
 import Reels from './components/Reels';
 
 function App() {

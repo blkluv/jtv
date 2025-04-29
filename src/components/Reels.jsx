@@ -3,7 +3,7 @@ import throttle from 'lodash/throttle';
 import videolinks from './videolinks';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { useContract, useBuyNow } from "@thirdweb-dev/react";
+import { useContract, useBuyNow } from '@thirdweb-dev/react';
 
 const Reel = ({
   src,
@@ -25,7 +25,7 @@ const Reel = ({
   const [showDescription, setShowDescription] = useState(false);
   const [showPurchase, setShowPurchase] = useState(false);
 
-  const { contract } = useContract("0x7FC8e27d971d7B2eA951FCe62192F6B76dD319B7");
+  const { contract } = useContract('0x7FC8e27d971d7B2eA951FCe62192F6B76dD319B7');
   const { mutate: buyNow, isLoading } = useBuyNow(contract);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const Reel = ({
       await buyNow({
         id: id,
         buyAmount: 1,
-        type: "nft",
+        type: 'nft',
       });
       alert('Purchase successful!');
       setShowPurchase(false);
@@ -190,11 +190,11 @@ const Reel = ({
             <div className='mb-6'>
               <div 
                 id={`connect-button-${id}`}
-                data-widget="ConnectButton"
-                data-client-id="06bcfb42f1eeb14f3bdb12f16703ebb8"
-                data-theme="dark"
-                data-chains="8453,1,137"
-                data-locale="en_US"
+                data-widget='ConnectButton'
+                data-client-id='06bcfb42f1eeb14f3bdb12f16703ebb8'
+                data-theme='dark'
+                data-chains='8453,1,137'
+                data-locale='en_US'
                 className='mb-4'
               ></div>
 

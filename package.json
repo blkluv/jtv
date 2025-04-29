@@ -1,5 +1,5 @@
 {
-  "name": "jerseyfm-tv",
+  "name": "instagram",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,35 +9,52 @@
     "@mui/material": "^5.16.6",
     "@thirdweb-dev/react": "^4.9.4",
     "@thirdweb-dev/sdk": "^4.0.99",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
     "ethers": "^5.8.0",
     "framer-motion": "^11.18.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-dotenv": "^0.1.3",
     "react-icons": "^5.2.1",
     "react-intersection-observer": "^9.15.0",
     "react-router-dom": "^6.26.0",
-    "react-scripts": "^5.0.2",
+    "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "styled-components": "^6.1.12",
+    "url": "^0.11.4",
+    "util": "^0.12.5",
+    "vm-browserify": "^1.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-dotenv && react-scripts start",
-    "build": "react-dotenv && react-scripts build",
+    "start": "react-dotenv && react-app-rewired start",
+    "build": "react-dotenv && react-app-rewired build",
     "serve": "react-dotenv && serve build",
     "eject": "react-scripts eject",
     "preinstall": "npx npm-force-resolutions"
   },
   "resolutions": {
-    "typescript": "5.0.4",
+    "typescript": "4.9.5",
     "@typescript-eslint/parser": "5.62.0",
-    "@typescript-eslint/eslint-plugin": "5.62.0"
+    "@typescript-eslint/eslint-plugin": "5.62.0",
+    "ajv": "8.12.0",
+    "ajv-keywords": "5.1.0",
+    "schema-utils": "4.2.0"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "quotes": ["error", "double", { "avoidEscape": true }]
+    }
   },
   "browserslist": {
     "production": [
@@ -54,14 +71,27 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
+    "ajv": "^8.12.0",
+    "ajv-keywords": "^5.1.0",
     "autoprefixer": "^10.4.20",
     "eslint-config-prettier": "^10.1.2",
     "eslint-plugin-prettier": "^5.2.6",
     "npm-force-resolutions": "^0.0.3",
     "postcss": "^8.5.1",
     "prettier": "^3.5.3",
+    "react-app-rewired": "^2.2.1",
+    "schema-utils": "^4.2.0",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.0.4"
+    "typescript": "^4.9.5"
+  },
+  "browser": {
+    "stream": false,
+    "crypto": false,
+    "http": false,
+    "https": false,
+    "os": false,
+    "vm": false,
+    "url": false
   },
   "description": "demo app link: https://tv.jersey.fm",
   "main": "tailwind.config.js",
