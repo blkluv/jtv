@@ -39,6 +39,14 @@ const videolinks = [
     tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
     description: "🧱 Brick City homage to the orginal creators of Jersey Club",
   },
+  {
+    id: 6,
+    src: "https://ipfs.io/ipfs/bafybeiecklhq6hxm2o5vc2zgtggguxbnrsaj7x74hogsxl523y7zvf4f6y",
+    creator: "DJ HAHZ",
+    cryptoAddy: "0x7FC8e27d971d7B2eA951FCe62192F6B76dD319B7",
+    tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
+    description: "Ja Rule Clap Back Sample",
+  },
 ];
 
 export default videolinks;
