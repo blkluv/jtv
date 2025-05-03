@@ -2,7 +2,16 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import throttle from "lodash/throttle";
 import axios from "axios";
 import videolinks from "./videolinks";
-import { FaShareAlt, FaHeart, FaRegHeart, FaVolumeUp, FaVolumeMute, FaComment, FaMusic, FaInfoCircle } from "react-icons/fa";
+import {
+  FaShareAlt,
+  FaHeart,
+  FaRegHeart,
+  FaVolumeUp,
+  FaVolumeMute,
+  FaComment,
+  FaMusic,
+  FaInfoCircle
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Reel = ({
@@ -63,7 +72,7 @@ const Reel = ({
   };
 
   const getPriceDisplay = () => {
-    if (typeof price === 'string') return price;
+    if (typeof price === "string") return price;
     if (price && price.display) return price.display;
     return "Price not available";
   };
@@ -195,16 +204,28 @@ const Reels = () => {
   const handleShare = (id) => {
     const shareUrl = `${window.location.origin}/video/${id}`;
     if (navigator.share) {
-      navigator.share({
-        title: "Check out this property!",
-        text: "Amazing property available for crypto purchase!",
-        url: shareUrl
-      }).catch(err => console.error("Share failed", err));
+      navigator
+        .share({
+          title: "Check out this property!",
+          text: "Amazing property available for crypto purchase!",
+          url: shareUrl
+        })
+        .catch(err => console.error("Share failed", err));
     } else {
       navigator.clipboard.writeText(shareUrl).then(() => {
         alert("Link copied to clipboard!");
       });
     }
+  };
+
+  const handleMint = (tokenId) => {
+    const openseaUrl = `https://opensea.io/assets/base/YOUR_CONTRACT_ADDRESS/${tokenId}`;
+    window.open(openseaUrl, "_blank");
+  };
+
+  const handleTip = (creatorAddress) => {
+    const etherscanUrl = `https://etherscan.io/address/${creatorAddress}`;
+    window.open(etherscanUrl, "_blank");
   };
 
   const handleScroll = throttle(() => {
