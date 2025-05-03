@@ -17,7 +17,7 @@ html {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
   padding: 2rem;
-  background-color: #f9f9f9; /* Light background */
+  background-color: #f9f9f9;
 }
 
 .video-item {
@@ -37,4 +37,40 @@ html {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.details {
+  padding: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 16px;
+  color: #FF4500;
+}
+
+.video-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.mint-btn,
+.tip-btn {
+  background-color: #00bfae;
+  color: white;
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.mint-btn:hover,
+.tip-btn:hover {
+  background-color: #008c7d;
 }

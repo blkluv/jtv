@@ -4,11 +4,12 @@ const videolinks = [
     tokenId: 0,
     dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeiafetfkj75ey5pyuxpvnbfjt6agsp4a2u7wy5py7b2jvvgio3d7em",
-    creator: "DJ Hyped Up Reese",
+    creator: "DJ Hyped Up Reese 🎧",
     cryptoAddy: "0xJerseyClub...",
     tags: ["🔥 Hot Track", "💿 for sale", "Jersey Club"],
-    description: "🔥 Jersey Club SZA Remix",
-    price: "0.05 ETH"
+    description: "🔥 Jersey Club SZA Remix – A fresh take on the classics!",
+    price: "0.05 ETH",
+    what3wordsAddress: "club.bounce.jersey",
   },
   {
     id: 2,
@@ -18,8 +19,9 @@ const videolinks = [
     creator: "DJ Hahz 🎤",
     cryptoAddy: "0xJerseyClub...",
     tags: ["🎧 Stream Now", "💿 for sale", "Viral Challenge"],
-    description: "🚀 Bring it back",
-    price: "0.04 ETH"
+    description: "🚀 Bring it back – A remix that’s out of this world!",
+    price: "0.04 ETH",
+    what3wordsAddress: "reel.flash.moment",
   },
   {
     id: 3,
@@ -29,8 +31,9 @@ const videolinks = [
     creator: "👑 DJ Hahz",
     cryptoAddy: "0xJerseyClub...",
     tags: ["💃 Dance Track", "💿 for sale", "Exclusive"],
-    description: "💃 Bounce",
-    price: "0.06 ETH"
+    description: "💃 Bounce – Feel the rhythm of the streets!",
+    price: "0.06 ETH",
+    what3wordsAddress: "party.bounce.rave",
   },
   {
     id: 4,
@@ -40,8 +43,9 @@ const videolinks = [
     creator: "Unclaimed",
     cryptoAddy: "0xJerseyClub...",
     tags: ["🎶 Fresh Drop", "💿 for sale", "Limited Edition"],
-    description: "OG Cypher",
-    price: "0.07 ETH"
+    description: "OG Cypher – The true roots of Jersey Club.",
+    price: "0.07 ETH",
+    what3wordsAddress: "origin.jersey.vibes",
   },
   {
     id: 5,
@@ -51,8 +55,9 @@ const videolinks = [
     creator: "Brick City 🧱",
     cryptoAddy: "0xJerseyClub...",
     tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
-    description: "🧱 Brick City homage to the orginal creators of Jersey Club",
-    price: "0.05 ETH"
+    description: "🧱 Brick City homage to the original creators of Jersey Club – Respect the roots!",
+    price: "0.05 ETH",
+    what3wordsAddress: "city.vibe.bounce",
   }
 ];
 
