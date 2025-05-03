@@ -6,6 +6,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["🔥 Hot Track", "💿 for sale", "Jersey Club"],
     description: "🔥 Jersey Club SZA Remix",
+    price: "0.05 ETH"
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["🎧 Stream Now", "💿 for sale", "Viral Challenge"],
     description: "🚀 Bring it back",
+    price: "0.04 ETH"
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["💃 Dance Track", "💿 for sale", "Exclusive"],
     description: "💃 Bounce",
+    price: "0.06 ETH"
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["🎶 Fresh Drop", "💿 for sale", "Limited Edition"],
     description: "OG Cypher",
+    price: "0.07 ETH"
   },
   {
     id: 5,
@@ -38,6 +42,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
     description: "🧱 Brick City homage to the orginal creators of Jersey Club",
+    price: "0.05 ETH"
   },
   {
     id: 6,
@@ -46,7 +51,8 @@ const videolinks = [
     cryptoAddy: "0x7FC8e27d971d7B2eA951FCe62192F6B76dD319B7",
     tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
     description: "Ja Rule Clap Back Sample",
-  },
+    price: "0.08 ETH"
+  }
 ];
 
 export default videolinks;
