@@ -8,8 +8,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["🔥 Hot Track", "💿 for sale", "Jersey Club"],
     description: "🔥 Jersey Club SZA Remix – A fresh take on the classics!",
-    price: "0.05 ETH",
-    what3wordsAddress: "club.bounce.jersey",
+    price: "0.05 ETH"
   },
   {
     id: 2,
@@ -20,8 +19,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["🎧 Stream Now", "💿 for sale", "Viral Challenge"],
     description: "🚀 Bring it back – A remix that’s out of this world!",
-    price: "0.04 ETH",
-    what3wordsAddress: "reel.flash.moment",
+    price: "0.04 ETH"
   },
   {
     id: 3,
@@ -32,8 +30,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["💃 Dance Track", "💿 for sale", "Exclusive"],
     description: "💃 Bounce – Feel the rhythm of the streets!",
-    price: "0.06 ETH",
-    what3wordsAddress: "party.bounce.rave",
+    price: "0.06 ETH"
   },
   {
     id: 4,
@@ -44,8 +41,7 @@ const videolinks = [
     cryptoAddy: "0xJerseyClub...",
     tags: ["🎶 Fresh Drop", "💿 for sale", "Limited Edition"],
     description: "OG Cypher – The true roots of Jersey Club.",
-    price: "0.07 ETH",
-    what3wordsAddress: "origin.jersey.vibes",
+    price: "0.07 ETH"
   },
   {
     id: 5,
@@ -55,9 +51,8 @@ const videolinks = [
     creator: "Brick City 🧱",
     cryptoAddy: "0xJerseyClub...",
     tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
-    description: "🧱 Brick City homage to the original creators of Jersey Club – Respect the roots!",
-    price: "0.05 ETH",
-    what3wordsAddress: "city.vibe.bounce",
+    description: "🧱 Brick City homage – Respect the roots!",
+    price: "0.05 ETH"
   }
 ];
 
