@@ -17,39 +17,66 @@ const OPEN_SEA_BASE_URL = "https://opensea.io/assets/ethereum/";
 
 // Sample data, in real app this would come from an API or a config file
 const videolinks = [
-    {
-        id: "1",
-        src: "https://example.com/video1.mp4",
-        tags: ["JerseyClub", "Music", "Dance"],
-        description: "This is the first Jersey Club reel.  It's a hot track!",
-        address: "123 Main St, Anytown",
-        price: { display: "0.5 ETH", value: 0.5 },
-        creator: "CreatorA",
-        cryptoAddy: "0x123...",
-        openSeaUrl: `${OPEN_SEA_BASE_URL}0xabc123`, // Example URL, replace with real one
-    },
-    {
-        id: "2",
-        src: "https://example.com/video2.mp4",
-        tags: ["Club", "DJ", "Remix"],
-        description: "Another fire Jersey Club remix.  Get ready to move!",
-        address: "456 Oak Ave, Somecity",
-        price: "SOLD OUT",
-        creator: "CreatorB",
-        cryptoAddy: "0x456...",
-        openSeaUrl: `${OPEN_SEA_BASE_URL}0xdef456`,
-    },
-     {
-        id: "3",
-        src: "https://example.com/video3.mp4",
-        tags: ["Vibes", "Underground", "Bass"],
-        description: "Vibes from the underground",
-        address: "789 Pine Lane, Othertown",
-        price: { display: "1.2 ETH", value: 1.2 },
-        creator: "CreatorC",
-        cryptoAddy: "0x789...",
-        openSeaUrl: `${OPEN_SEA_BASE_URL}0xghi789`,
-    },
+  {
+    id: 1,
+    tokenId: 0,
+    dropContract: "0xYourDropContractAddressHere",
+    src: "https://ipfs.io/ipfs/bafybeiafetfkj75ey5pyuxpvnbfjt6agsp4a2u7wy5py7b2jvvgio3d7em",
+    creator: "DJ Hyped Up Reese 🎧",
+    cryptoAddy: "0xJerseyClub...",
+    tags: ["🔥 Hot Track", "💿 for sale", "Jersey Club"],
+    description: "🔥 Jersey Club SZA Remix – A fresh take on the classics!",
+    price: "0.05 ETH",
+    openSeaUrl: "https://opensea.io/assets/ethereum/0xYourDropContractAddressHere/0",
+  },
+  {
+    id: 2,
+    tokenId: 1,
+    dropContract: "0xYourDropContractAddressHere",
+    src: "https://ipfs.io/ipfs/bafybeihzs44ejbtevneukckela2orjw5ijb4lxpdatniaibmyz7gyuixu4",
+    creator: "DJ Hahz 🎤",
+    cryptoAddy: "0xJerseyClub...",
+    tags: ["🎧 Stream Now", "💿 for sale", "Viral Challenge"],
+    description: "🚀 Bring it back – A remix that’s out of this world!",
+    price: "0.04 ETH",
+    openSeaUrl: "https://opensea.io/assets/ethereum/0xYourDropContractAddressHere/1",
+  },
+  {
+    id: 3,
+    tokenId: 2,
+    dropContract: "0xYourDropContractAddressHere",
+    src: "https://ipfs.io/ipfs/bafybeig7pkorh3ilmyh6uekdhqbwc6itqvi7eduirs2y7mhfiwfl3ogpmy",
+    creator: "👑 DJ Hahz",
+    cryptoAddy: "0xJerseyClub...",
+    tags: ["💃 Dance Track", "💿 for sale", "Exclusive"],
+    description: "💃 Bounce – Feel the rhythm of the streets!",
+    price: "0.06 ETH",
+    openSeaUrl: "https://opensea.io/assets/ethereum/0xYourDropContractAddressHere/2",
+  },
+  {
+    id: 4,
+    tokenId: 3,
+    dropContract: "0xYourDropContractAddressHere",
+    src: "https://ipfs.io/ipfs/bafybeigzb44h3okzv2hw4xbafremhghbhcfkqcjii7hyt5u2o6iqynds3q",
+    creator: "Unclaimed",
+    cryptoAddy: "0xJerseyClub...",
+    tags: ["🎶 Fresh Drop", "💿 for sale", "Limited Edition"],
+    description: "OG Cypher – The true roots of Jersey Club.",
+    price: "0.07 ETH",
+    openSeaUrl: "https://opensea.io/assets/ethereum/0xYourDropContractAddressHere/3",
+  },
+  {
+    id: 5,
+    tokenId: 4,
+    dropContract: "0xYourDropContractAddressHere",
+    src: "https://ipfs.io/ipfs/bafybeicmzqkc2fswmybww4ovanjupg3qaiyblbjzwbbucgchajcljph2qm",
+    creator: "Brick City 🧱",
+    cryptoAddy: "0xJerseyClub...",
+    tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
+    description: "🧱 Brick City homage – Respect the roots!",
+    price: "0.05 ETH",
+    openSeaUrl: "https://opensea.io/assets/ethereum/0xYourDropContractAddressHere/4",
+  }
 ];
 
 const Reel = ({
@@ -160,7 +187,7 @@ const Reel = ({
               <FaRegHeart />
             )}
           </button>
-          <span className="mt-1 text-xs text-white">24.5K</span>
+          <span className="mt-1 text-xs text-white">Love</span>
         </div>
 
         {/* Mint Button (OpenSea) */}
