@@ -1,6 +1,7 @@
 import { createConfig, cookieStorage } from "@account-kit/react";
 import { QueryClient } from "@tanstack/react-query";
 import { sepolia } from "@account-kit/infra";
+import { createConfig, cookieStorage } from "@account-kit/react";
 import config from './config.ts';
 function getRequiredEnvVar(name) {
   const value = process.env[name];

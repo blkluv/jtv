@@ -1,6 +1,5 @@
 import React from "react";
 import Reels from "./components/Reels";
-import Hero from "./components/Hero";
 import { AccountKitProvider } from "@account-kit/react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { config, queryClient } from "./config"; // ✅ Import from config.ts
