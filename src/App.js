@@ -1,24 +1,18 @@
 import React from "react";
 import Reels from "./components/Reels";
+import Hero from "./components/Hero";
 import { AccountKitProvider } from "@account-kit/react";
-
-const config = {
-  dapps: [
-    {
-      appName: "JERSEY.FM",
-      appUrl: "https://tv.jersey.fm",
-    },
-  ],
-  network: "mainnet", // or "sepolia" for testnet
-  walletConnectProjectId: "your_walletconnect_project_id", // replace this
-};
+import { QueryClientProvider } from "@tanstack/react-query";
+import { config, queryClient } from "./config"; // ✅ Import from config.ts
 
 function App() {
   return (
     <AccountKitProvider config={config}>
-      <div className="App">
-        <Reels />
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <main className="min-h-screen text-white bg-black">
+          <Reels />
+        </main>
+      </QueryClientProvider>
     </AccountKitProvider>
   );
 }
