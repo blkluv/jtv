@@ -1,3 +1,13 @@
+import { useEffect, useRef, useState } from "react";
+import {
+  useAddress,
+  useSendTransaction,
+} from "@thirdweb-dev/react";
+import { ethers } from "ethers";
+import { Web3Button } from "@thirdweb-dev/react";
+import { FaHeart, FaRegHeart, FaShareAlt, FaInfoCircle, FaMoneyBillWave } from "react-icons/fa";
+import { motion } from "framer-motion";
+
 const Reel = ({
   src,
   isPlaying,
@@ -12,34 +22,32 @@ const Reel = ({
   price,
   creator,
   cryptoAddy,
+  creatorAddress,
   likeCount,
   setLikeCount,
+  dropContract,
+  tokenId,
 }) => {
   const videoRef = useRef(null);
   const [animateHeart, setAnimateHeart] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const address = useAddress();
+  const sendTx = useSendTransaction();
 
   useEffect(() => {
     const video = videoRef.current;
     if (isPlaying) {
       video.play().catch((err) => console.error("Playback error:", err));
-      trackEvent("video_play", { videoId: id, creator });
     } else {
       video.pause();
     }
   }, [isPlaying]);
 
   const handleLikeClick = () => {
-    onLike();
+    onLike?.();
     setAnimateHeart(true);
     setTimeout(() => setAnimateHeart(false), 1000);
-    setLikeCount(likeCount + (isLiked ? -1 : 1));
-    trackEvent("like", { videoId: id, creator });
-  };
-
-  const handleShareClick = () => {
-    onShare();
-    trackEvent("share", { videoId: id, creator });
+    setLikeCount((prev) => prev + (isLiked ? -1 : 1));
   };
 
   const toggleInfo = () => {
@@ -50,6 +58,24 @@ const Reel = ({
     if (typeof price === "string") return price;
     if (price && price.display) return price.display;
     return "Price not available";
+  };
+
+  const sendTip = async () => {
+    if (!creatorAddress) {
+      alert("Creator address not set.");
+      return;
+    }
+
+    try {
+      await sendTx.mutateAsync({
+        to: creatorAddress,
+        value: ethers.utils.parseEther("0.01"), // Tip amount, change as needed
+      });
+      alert("Tip sent!");
+    } catch (err) {
+      console.error("Tip failed", err);
+      alert("Transaction failed.");
+    }
   };
 
   return (
@@ -78,17 +104,25 @@ const Reel = ({
           ))}
         </div>
 
-        {/* Ensure this button is visible */}
-        <div className="z-10 mt-2">
+        <div className="z-10 mt-2 space-y-2">
           <Web3Button
-            contractAddress={cryptoAddy}
+            contractAddress={dropContract}
             action={async (contract) => {
-              await contract.erc20.claim(1);
+              await contract.erc1155.claim(tokenId, 1);
             }}
             className="!bg-white !text-black !font-bold !py-2 !px-4 !rounded-full"
           >
             Buy with Crypto
           </Web3Button>
+
+          {creatorAddress && (
+            <button
+              onClick={sendTip}
+              className="flex items-center justify-center w-full px-4 py-2 font-bold text-white bg-green-600 rounded-full"
+            >
+              <FaMoneyBillWave className="mr-2" /> Tip Creator (0.01 ETH)
+            </button>
+          )}
         </div>
       </div>
 
@@ -98,7 +132,7 @@ const Reel = ({
         </button>
         <span className="mt-1 text-xs text-white">{likeCount} Loves</span>
 
-        <button onClick={handleShareClick} className="text-3xl text-white">
+        <button onClick={onShare} className="text-3xl text-white">
           <FaShareAlt />
         </button>
         <span className="mt-1 text-xs text-white">Share</span>
@@ -140,3 +174,5 @@ const Reel = ({
     </div>
   );
 };
+
+export default Reel;

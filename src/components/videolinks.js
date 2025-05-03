@@ -1,6 +1,8 @@
 const videolinks = [
   {
     id: 1,
+    tokenId: 0,
+    dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeiafetfkj75ey5pyuxpvnbfjt6agsp4a2u7wy5py7b2jvvgio3d7em",
     creator: "DJ Hyped Up Reese",
     cryptoAddy: "0xJerseyClub...",
@@ -10,6 +12,8 @@ const videolinks = [
   },
   {
     id: 2,
+    tokenId: 1,
+    dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeihzs44ejbtevneukckela2orjw5ijb4lxpdatniaibmyz7gyuixu4",
     creator: "DJ Hahz 🎤",
     cryptoAddy: "0xJerseyClub...",
@@ -19,6 +23,8 @@ const videolinks = [
   },
   {
     id: 3,
+    tokenId: 2,
+    dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeig7pkorh3ilmyh6uekdhqbwc6itqvi7eduirs2y7mhfiwfl3ogpmy",
     creator: "👑 DJ Hahz",
     cryptoAddy: "0xJerseyClub...",
@@ -28,6 +34,8 @@ const videolinks = [
   },
   {
     id: 4,
+    tokenId: 3,
+    dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeigzb44h3okzv2hw4xbafremhghbhcfkqcjii7hyt5u2o6iqynds3q",
     creator: "Unclaimed",
     cryptoAddy: "0xJerseyClub...",
@@ -37,21 +45,14 @@ const videolinks = [
   },
   {
     id: 5,
+    tokenId: 4,
+    dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeicmzqkc2fswmybww4ovanjupg3qaiyblbjzwbbucgchajcljph2qm",
     creator: "Brick City 🧱",
     cryptoAddy: "0xJerseyClub...",
     tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
     description: "🧱 Brick City homage to the orginal creators of Jersey Club",
     price: "0.05 ETH"
-  },
-  {
-    id: 6,
-    src: "https://ipfs.io/ipfs/bafybeiecklhq6hxm2o5vc2zgtggguxbnrsaj7x74hogsxl523y7zvf4f6y",
-    creator: "DJ HAHZ",
-    cryptoAddy: "0x7FC8e27d971d7B2eA951FCe62192F6B76dD319B7",
-    tags: ["🚀 Viral Hit", "💿 for sale", "Jersey Club"],
-    description: "Ja Rule Clap Back Sample",
-    price: "0.08 ETH"
   }
 ];
 
