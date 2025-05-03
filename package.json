@@ -22,7 +22,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "serve": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,json}\""
   },
   "dependencies": {
