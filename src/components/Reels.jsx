@@ -1,24 +1,65 @@
 import React, { useRef, useState, useEffect } from "react";
 import throttle from "lodash/throttle";
-import videolinks from "./videolinks";
+import { motion } from "framer-motion";
 import {
   FaShareAlt,
   FaHeart,
   FaRegHeart,
-  FaComment,
   FaInfoCircle,
   FaMusic,
+  FaEthereum, // For the mint icon (assuming Ethereum)
+  FaHandHoldingUsd, // For the tip icon
 } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { track } from "@vercel/analytics"; // Import Vercel Analytics
+
+// Replace this with your actual OpenSea base URL
+const OPEN_SEA_BASE_URL = "https://opensea.io/assets/ethereum/";
+
+// Sample data, in real app this would come from an API or a config file
+const videolinks = [
+    {
+        id: "1",
+        src: "https://example.com/video1.mp4",
+        tags: ["JerseyClub", "Music", "Dance"],
+        description: "This is the first Jersey Club reel.  It's a hot track!",
+        address: "123 Main St, Anytown",
+        price: { display: "0.5 ETH", value: 0.5 },
+        creator: "CreatorA",
+        cryptoAddy: "0x123...",
+        openSeaUrl: `${OPEN_SEA_BASE_URL}0xabc123`, // Example URL, replace with real one
+    },
+    {
+        id: "2",
+        src: "https://example.com/video2.mp4",
+        tags: ["Club", "DJ", "Remix"],
+        description: "Another fire Jersey Club remix.  Get ready to move!",
+        address: "456 Oak Ave, Somecity",
+        price: "SOLD OUT",
+        creator: "CreatorB",
+        cryptoAddy: "0x456...",
+        openSeaUrl: `${OPEN_SEA_BASE_URL}0xdef456`,
+    },
+     {
+        id: "3",
+        src: "https://example.com/video3.mp4",
+        tags: ["Vibes", "Underground", "Bass"],
+        description: "Vibes from the underground",
+        address: "789 Pine Lane, Othertown",
+        price: { display: "1.2 ETH", value: 1.2 },
+        creator: "CreatorC",
+        cryptoAddy: "0x789...",
+        openSeaUrl: `${OPEN_SEA_BASE_URL}0xghi789`,
+    },
+];
 
 const Reel = ({
   src,
   isPlaying,
   isMuted,
   toggleMute,
-  onLike,
+  onLove, // Renamed
   onShare,
-  isLiked,
+  isLoved, // Renamed
   id,
   tags,
   description,
@@ -26,6 +67,7 @@ const Reel = ({
   price,
   creator,
   cryptoAddy,
+  openSeaUrl, // Added prop for OpenSea URL
 }) => {
   const videoRef = useRef(null);
   const [animateHeart, setAnimateHeart] = useState(false);
@@ -42,11 +84,13 @@ const Reel = ({
     }
   }, [isPlaying]);
 
-  const handleLikeClick = () => {
-    onLike();
-    setAnimateHeart(true);
-    setTimeout(() => setAnimateHeart(false), 1000);
-  };
+    const handleLoveClick = () => { // Renamed
+        onLove();
+        setAnimateHeart(true);
+        setTimeout(() => setAnimateHeart(false), 1000);
+        track("love", { reelId: id }); // Track "love" event
+    };
+
 
   const toggleInfo = () => {
     setShowDescription(!showDescription);
@@ -105,12 +149,12 @@ const Reel = ({
 
         {/* Like Button */}
         <div className="flex flex-col items-center">
-          <button
-            onClick={handleLikeClick}
+          <button // Changed to handleLoveClick
+            onClick={handleLoveClick}
             className="text-3xl text-white"
-            aria-label={isLiked ? "Unlike" : "Like"}
+            aria-label={isLoved ? "Unlike" : "Like"} // Changed aria-label
           >
-            {isLiked ? (
+            {isLoved ? ( // Changed isLiked to isLoved
               <FaHeart className="text-red-500" />
             ) : (
               <FaRegHeart />
@@ -119,18 +163,27 @@ const Reel = ({
           <span className="mt-1 text-xs text-white">24.5K</span>
         </div>
 
-        {/* Comments */}
+        {/* Mint Button (OpenSea) */}
         <div className="flex flex-col items-center">
-          <button className="text-3xl text-white" aria-label="View Comments">
-            <FaComment />
-          </button>
-          <span className="mt-1 text-xs text-white">1.2K</span>
+            <a
+              href={openSeaUrl}  // Use the prop here
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-3xl text-white"
+              aria-label="Mint on OpenSea"
+            >
+              <FaEthereum />
+            </a>
+            <span className="mt-1 text-xs text-white">Mint</span>
         </div>
 
         {/* Share */}
         <div className="flex flex-col items-center">
           <button
-            onClick={onShare}
+            onClick={() => {
+              onShare();
+              track("share", { reelId: id }); // Track "share"
+            }}
             className="text-3xl text-white"
             aria-label="Share"
           >
@@ -148,6 +201,22 @@ const Reel = ({
           >
             <FaInfoCircle />
           </button>
+        </div>
+
+        {/* Tip Button */}
+        <div className="flex flex-col items-center">
+          <button
+            onClick={() => {
+              // Replace this with your actual tipping logic (e.g., open a modal, redirect)
+              alert(`Tip ${creator} at ${cryptoAddy}`); //  Replace with real action
+              track("tip", { reelId: id, creator: creator });
+            }}
+            className="text-3xl text-white"
+            aria-label={`Tip ${creator}`}
+          >
+            <FaHandHoldingUsd />
+          </button>
+          <span className="mt-1 text-xs text-white">Tip</span>
         </div>
 
         {/* Music */}
@@ -201,34 +270,33 @@ const Reel = ({
 const Reels = () => {
   const [currentReelIndex, setCurrentReelIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
-  const [likedVideos, setLikedVideos] = useState({});
+  const [lovedVideos, setLovedVideos] = useState({}); // Renamed
   const containerRef = useRef(null);
   const [touchStartY, setTouchStartY] = useState(0);
 
   const toggleMute = () => setIsMuted((prev) => !prev);
 
-  const handleLike = (id) => {
-    setLikedVideos((prev) => ({
+  const handleLove = (id) => { // Renamed
+    setLovedVideos((prev) => ({ // Renamed
       ...prev,
       [id]: !prev[id],
     }));
   };
 
   const handleShare = (id) => {
-    const shareUrl = `https://tv.jersey.fm/video/${id}`;
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "Check out this Jersey Club video!",
-          text: "If it goes viral, we will auction it.",
-          url: shareUrl,
-        })
-        .catch((err) => console.error("Share failed", err));
-    } else {
-      navigator.clipboard.writeText(shareUrl).then(() => {
-        alert("Link copied to clipboard!");
-      });
-    }
+      const shareUrl = `https://tv.jersey.fm/video/${id}`;
+      if (navigator.share) {
+          navigator.share({
+              title: "Check out this Jersey Club video!",
+              text: "If it goes viral, we will auction it.",
+              url: shareUrl,
+          })
+          .catch((err) => console.error("Share failed", err));
+      } else {
+          navigator.clipboard.writeText(shareUrl).then(() => {
+              alert("Link copied to clipboard!");
+          });
+      }
   };
 
   const handleScroll = throttle(() => {
@@ -287,9 +355,9 @@ const Reels = () => {
             isPlaying={currentReelIndex === index}
             isMuted={isMuted}
             toggleMute={toggleMute}
-            onLike={() => handleLike(reel.id)}
-            onShare={() => handleShare(reel.id)}
-            isLiked={likedVideos[reel.id]}
+            onLove={() => handleLove(reel.id)} // Changed to handleLove
+            onShare={handleShare}
+            isLoved={lovedVideos[reel.id]} // Changed to isLoved
             id={reel.id}
             tags={reel.tags}
             description={reel.description}
@@ -297,7 +365,7 @@ const Reels = () => {
             price={reel.price}
             creator={reel.creator}
             cryptoAddy={reel.cryptoAddy}
-            what3wordsAddress={reel.what3wordsAddress}
+            openSeaUrl={reel.openSeaUrl} // Pass the OpenSea URL
           />
         </div>
       ))}
