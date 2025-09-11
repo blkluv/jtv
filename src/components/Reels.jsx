@@ -1,60 +1,81 @@
 import React, { useRef, useState, useEffect } from "react";
 import throttle from "lodash/throttle";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaShareAlt,
   FaHeart,
   FaRegHeart,
-  FaInfoCircle,
   FaMusic,
-  FaEthereum, // For the mint icon (assuming Ethereum)
-  FaHandHoldingUsd, // For the tip icon
+  FaEthereum,
+  FaComment,
+  FaHome,
+  FaSearch,
+  FaUser,
+  FaPlus,
+  FaEllipsisH,
+  FaChevronDown,
+  FaVolumeMute,
+  FaVolumeUp,
+  FaFire,
+  FaCrown,
+  FaGem,
+  FaBookmark,
+  FaShoppingBag
 } from "react-icons/fa";
-import { track } from "@vercel/analytics"; // Import Vercel Analytics
+import { track } from "@vercel/analytics";
 
-// Replace this with your actual OpenSea base URL
-const OPEN_SEA_BASE_URL = "https://opensea.io/assets/base/";
-
-// Sample data, in real app this would come from an API or a config file
+// Sample data
 const videolinks = [
   {
     id: 1,
     tokenId: 0,
     dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
-    src: "https://ipfs.io/ipfs/bafybeid425wpltxblwhrk2dtfngpgn2g5ujncapeb7m5r3blu2m477ue4y",
+    src: "https://ipfs.io/ipfs/bafybeid425wpltxblwhrk2dtfngpgn2g5ujncapeb7m5r3blu2m477ue4",
     creator: "Stormiiy",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
     tags: ["🔥 Viral Reel", "💃 15 for sale", "🚀 Unlimited floor potential"],
-    description: "🔥 Classic Stormiiy twerk video",
+    description: "🔥 Classic Stormiiy twerk video. If you own this NFT, you'll get exclusive access to my live streams!",
     price: "0.003 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/1",
+    likes: 1245,
+    comments: 132,
+    shares: 112,
+    creatorFollowers: "245K"
   },
   {
-    id: 1,
+    id: 2,
     tokenId: 0,
     dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
     src: "https://ipfs.io/ipfs/bafybeig2zo5wa2oe6o627g2fdjzob5zzkkoso6vpehlmggl6c2mq6olude",
     creator: "Jelly",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
     tags: ["🔥 Viral Reel", "💃 15 for sale", "🚀 Unlimited floor potential"],
-    description: "🔥 Shake Sum",
+    description: "🔥 Shake Sum - Exclusive content for NFT holders only!",
     price: "0.003 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/2",
+    likes: 1189,
+    comments: 121,
+    shares: 98,
+    creatorFollowers: "189K"
   },
   {
-    id: 2,
+    id: 3,
     tokenId: 0,
     dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeic2322jgkppbahoclgrr7s5y5terk6lka4pojf46huqzpxdt64pju",
     creator: "PYT",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
     tags: ["🔥 Viral Reel", "💃 1 for sale"],
-    description: "🔥 Get this PYT on livestream by holding her GEM.",
+    description: "🔥 Get this PYT on livestream by holding her GEM. Limited edition!",
     price: "0.003 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/3",
+    likes: 2312,
+    comments: 245,
+    shares: 219,
+    creatorFollowers: "312K"
   },
-  {
-    id: 3,
+    {
+    id: 4,
     tokenId: 1,
     dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeie2eugkpwcuioagqsrgvlkn4azmhpad5qq4g4lxnfmtatba5sqkgy",
@@ -64,9 +85,12 @@ const videolinks = [
     description: "🔥 Become of 1 of 15 Gemologist to own this classic Lexisoriya reel.",
     price: "0.003 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x1308eb43152209f1da697f89c3b2c6a4766dc371/2",
+    likes: 421,
+    comments: 67,
+    shares: 24
   },
   {
-    id: 4,
+    id: 5,
     tokenId: 2,
     dropContract: "0xYourDropContractAddressHere",
     src: "https://ipfs.io/ipfs/bafybeicdweirwd5bsiw7xjqmdqwybsdr72s5fb2rrvsvor3veclx5pdzc4",
@@ -76,29 +100,93 @@ const videolinks = [
     description: "💃 Own and pump the health benefits of Twerking aka Mapouka",
     price: "0.0003 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/5",
+    likes: 156,
+    comments: 18,
+    shares: 6
   }
 ];
 
+// Intro Screen Component
+const IntroScreen = ({ onGetStarted }) => {
+  return (
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center text-white bg-gradient-to-br from-purple-900 via-blue-900 to-black">
+      <motion.div 
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-col items-center justify-center max-w-md p-8 mx-4 border rounded-3xl bg-black/30 backdrop-blur-md border-white/10"
+      >
+        <div className="flex items-center mb-6">
+          <div className="flex items-center justify-center w-16 h-16 mr-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500">
+            <FaGem className="text-2xl text-white" />
+          </div>
+          <h1 className="text-4xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
+            TWERK.DANCE
+          </h1>
+        </div>
+        
+        <h2 className="mb-2 text-2xl font-bold text-center">Discover & Collect Exclusive Gemz</h2>
+        <p className="mb-8 text-center text-gray-300">
+          Watch, like, and collect limited edition videos from your favorite Twerkrz. 
+          Own, Flip and Trade fiya twerkz on Base blockchain for real money.
+        </p>
+        
+        <div className="grid w-full grid-cols-3 gap-4 mb-8">
+          <div className="flex flex-col items-center p-3 bg-white/5 rounded-xl">
+            <FaFire className="mb-2 text-xl text-orange-500" />
+            <span className="text-sm">Trending</span>
+          </div>
+          <div className="flex flex-col items-center p-3 bg-white/5 rounded-xl">
+            <FaCrown className="mb-2 text-xl text-yellow-500" />
+            <span className="text-sm">Exclusive</span>
+          </div>
+          <div className="flex flex-col items-center p-3 bg-white/5 rounded-xl">
+            <FaEthereum className="mb-2 text-xl text-blue-400" />
+            <span className="text-sm">Collect</span>
+          </div>
+        </div>
+        
+        <button 
+          onClick={onGetStarted}
+          className="w-full py-4 text-lg font-bold text-white transition-transform rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105"
+        >
+          Start Exploring
+        </button>
+        
+        <p className="mt-6 text-xs text-center text-gray-400">
+          By continuing, you agree to our Terms of Service and Privacy Policy
+        </p>
+      </motion.div>
+    </div>
+  );
+};
+
+// Reel Component
 const Reel = ({
   src,
   isPlaying,
   isMuted,
   toggleMute,
-  onLove, // Renamed
+  onLove,
   onShare,
-  isLoved, // Renamed
+  isLoved,
   id,
   tags,
   description,
-  address,
   price,
   creator,
   cryptoAddy,
-  openSeaUrl, // Added prop for OpenSea URL
+  openSeaUrl,
+  likes,
+  comments,
+  shares,
+  creatorFollowers
 }) => {
   const videoRef = useRef(null);
   const [animateHeart, setAnimateHeart] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [currentLikeCount, setCurrentLikeCount] = useState(likes);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -111,13 +199,20 @@ const Reel = ({
     }
   }, [isPlaying]);
 
-    const handleLoveClick = () => { // Renamed
-        onLove();
-        setAnimateHeart(true);
-        setTimeout(() => setAnimateHeart(false), 1000);
-        track("love", { reelId: id }); // Track "love" event
-    };
-
+  const handleLoveClick = () => {
+    const newLikedState = !isLoved;
+    onLove();
+    
+    if (newLikedState) {
+      setCurrentLikeCount(prev => prev + 1);
+    } else {
+      setCurrentLikeCount(prev => prev - 1);
+    }
+    
+    setAnimateHeart(true);
+    setTimeout(() => setAnimateHeart(false), 1000);
+    track("love", { reelId: id });
+  };
 
   const toggleInfo = () => {
     setShowDescription(!showDescription);
@@ -135,127 +230,164 @@ const Reel = ({
       <video
         ref={videoRef}
         src={src}
-        className="object-cover h-full"
+        className="object-cover w-full h-full"
         loop
         muted={isMuted}
         playsInline
         onClick={toggleMute}
         aria-label="Reel Video"
       />
+      
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
+      
+      {/* Mute Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isMuted ? 1 : 0 }}
+        className="absolute p-2 rounded-full top-4 right-4 bg-black/50 backdrop-blur-md"
+      >
+        {isMuted ? <FaVolumeMute className="text-white" /> : <FaVolumeUp className="text-white" />}
+      </motion.div>
 
-      {/* Overlay UI */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-        {/* Property Info */}
-        <div className="mb-4 text-white">
-          <h3 className="text-lg font-bold">{address}</h3>
-          <p className="text-sm opacity-90">{getPriceDisplay()}</p>
-          <p className="mt-1 text-xs opacity-80">👻 {creator}</p>
+      {/* Left Side - Creator Info & Description */}
+      <div className="absolute bottom-0 left-0 z-10 flex flex-col justify-end w-2/3 p-4 text-white">
+        <div className="mb-3">
+          <h3 className="text-lg font-bold">@{creator}</h3>
+          <p className="text-sm line-clamp-2">{description}</p>
         </div>
-
-        {/* Tags */}
+        
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="px-2 py-1 text-xs text-white rounded-full bg-black/50"
+              className="px-3 py-1 text-xs font-medium text-white rounded-full bg-gray-800/80 backdrop-blur-md"
             >
               {tag}
             </span>
           ))}
         </div>
+        
+        <div className="flex items-center">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+            className="mr-2"
+          >
+            <FaMusic className="text-pink-400" />
+          </motion.div>
+          <span className="text-sm">Original Sound - {creator}</span>
+        </div>
       </div>
 
       {/* Right Sidebar Actions */}
-      <div className="absolute flex flex-col items-center gap-6 right-4 bottom-24">
-        {/* Profile */}
+      <div className="absolute z-10 flex flex-col items-center gap-5 right-4 bottom-24">
+        {/* Profile Avatar */}
         <div className="flex flex-col items-center">
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500">
-            <span className="text-xs font-bold text-white">{id}</span>
+          <div className="relative flex items-center justify-center p-0.5 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500">
+            <div className="flex items-center justify-center bg-black rounded-full w-14 h-14">
+              <img 
+                src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${creator}`} 
+                alt={creator}
+                className="w-12 h-12 rounded-full"
+              />
+            </div>
           </div>
+          <motion.div 
+            whileTap={{ scale: 0.9 }}
+            className="flex items-center justify-center w-6 h-6 mt-2 bg-red-500 rounded-full"
+          >
+            <FaPlus className="text-xs text-white" />
+          </motion.div>
         </div>
 
         {/* Like Button */}
         <div className="flex flex-col items-center">
-          <button // Changed to handleLoveClick
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             onClick={handleLoveClick}
             className="text-3xl text-white"
-            aria-label={isLoved ? "Unlike" : "Like"} // Changed aria-label
+            aria-label={isLoved ? "Unlike" : "Like"}
           >
-            {isLoved ? ( // Changed isLiked to isLoved
+            {isLoved ? (
               <FaHeart className="text-red-500" />
             ) : (
               <FaRegHeart />
             )}
-          </button>
-          <span className="mt-1 text-xs text-white">Love</span>
+          </motion.button>
+          <span className="mt-1 text-xs font-bold text-white">{currentLikeCount}</span>
+        </div>
+
+        {/* Comment Button */}
+        <div className="flex flex-col items-center">
+          <motion.button whileTap={{ scale: 0.9 }} className="text-3xl text-white">
+            <FaComment />
+          </motion.button>
+          <span className="mt-1 text-xs font-bold text-white">{comments}</span>
+        </div>
+
+        {/* Bookmark Button */}
+        <div className="flex flex-col items-center">
+          <motion.button 
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setIsBookmarked(!isBookmarked)}
+            className="text-2xl text-white"
+          >
+            {isBookmarked ? (
+              <FaBookmark className="text-yellow-400 fill-current" />
+            ) : (
+              <FaBookmark />
+            )}
+          </motion.button>
+          <span className="mt-1 text-xs font-bold text-white">Save</span>
         </div>
 
         {/* Mint Button (OpenSea) */}
         <div className="flex flex-col items-center">
-            <a
-              href={openSeaUrl}  // Use the prop here
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-3xl text-white"
-              aria-label="Mint on OpenSea"
-            >
-              <FaEthereum />
-            </a>
-            <span className="mt-1 text-xs text-white">Mint</span>
+          <motion.a
+            whileTap={{ scale: 0.9 }}
+            href={openSeaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-2xl text-white rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+            aria-label="Mint on OpenSea"
+          >
+            <FaShoppingBag />
+          </motion.a>
+          <span className="mt-1 text-xs font-bold text-white">Collect</span>
         </div>
-
-        {/* Share */}
+        
+        {/* Share Button */}
         <div className="flex flex-col items-center">
-          <button
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             onClick={() => {
               onShare();
-              track("share", { reelId: id }); // Track "share"
+              track("share", { reelId: id });
             }}
-            className="text-3xl text-white"
+            className="text-2xl text-white"
             aria-label="Share"
           >
             <FaShareAlt />
-          </button>
-          <span className="mt-1 text-xs text-white">Share</span>
+          </motion.button>
+          <span className="mt-1 text-xs font-bold text-white">{shares}</span>
         </div>
 
-        {/* Info */}
-        <div className="flex flex-col items-center">
-          <button
-            onClick={toggleInfo}
-            className="text-3xl text-white"
-            aria-label="View Information"
-          >
-            <FaInfoCircle />
-          </button>
-        </div>
-
-        {/* Tip Button */}
-        <div className="flex flex-col items-center">
-          <button
-            onClick={() => {
-              // Replace this with your actual tipping logic (e.g., open a modal, redirect)
-              alert(`Tip ${creator} at ${cryptoAddy}`); //  Replace with real action
-              track("tip", { reelId: id, creator: creator });
-            }}
-            className="text-3xl text-white"
-            aria-label={`Tip ${creator}`}
-          >
-            <FaHandHoldingUsd />
-          </button>
-          <span className="mt-1 text-xs text-white">Tip</span>
-        </div>
-
-        {/* Music */}
-        <div className="flex items-center justify-center w-10 h-10 mt-2 border rounded-full border-white/30"  aria-label="Music">
+        {/* Rotating Music Disc */}
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          className="flex items-center justify-center w-10 h-10 mt-2 border-2 rounded-full border-white/30"
+        >
           <FaMusic className="text-sm text-white" />
-        </div>
+        </motion.div>
       </div>
 
       {/* Animated Heart */}
       {animateHeart && (
         <motion.div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
           initial={{ scale: 0, opacity: 1 }}
           animate={{ scale: 3, opacity: 0 }}
           transition={{ duration: 1 }}
@@ -265,65 +397,182 @@ const Reel = ({
       )}
 
       {/* Description Overlay */}
-      {showDescription && (
-        <div className="absolute inset-0 p-6 overflow-y-auto bg-black/80">
-          <div className="text-white">
-            <h2 className="mb-4 text-2xl font-bold">{address}</h2>
-            <div className="mb-6 text-sm whitespace-pre-line">{description}</div>
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <h3 className="font-bold">Price</h3>
-                <p>{getPriceDisplay()}</p>
+      <AnimatePresence>
+        {showDescription && (
+          <motion.div 
+            className="absolute inset-0 z-30 p-6 overflow-y-auto bg-black/95"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="text-white">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Video Details</h2>
+                <button
+                  onClick={toggleInfo}
+                  className="p-2 rounded-full bg-white/10"
+                  aria-label="Close Description"
+                >
+                  <FaChevronDown />
+                </button>
               </div>
-              <div>
-                <h3 className="font-bold">Creator Addy</h3>
-                <p>{cryptoAddy}</p>
+              
+              <div className="flex items-center mb-6">
+                <div className="flex items-center justify-center mr-4 rounded-full w-14 h-14 bg-gradient-to-tr from-purple-500 to-pink-500">
+                  <img 
+                    src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${creator}`} 
+                    alt={creator}
+                    className="w-12 h-12 rounded-full"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">@{creator}</h3>
+                  <p className="text-gray-300">{creatorFollowers} followers</p>
+                </div>
+                <button className="px-4 py-1 ml-auto text-sm font-semibold text-black bg-white rounded-full">
+                  Follow
+                </button>
+              </div>
+              
+              <div className="mb-6">
+                <h3 className="mb-2 text-lg font-bold">Description</h3>
+                <p className="text-gray-300">{description}</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="p-4 bg-gray-800/50 rounded-xl">
+                  <h3 className="mb-1 font-bold text-gray-400">Price</h3>
+                  <p className="text-lg">{getPriceDisplay()}</p>
+                </div>
+                <div className="p-4 bg-gray-800/50 rounded-xl">
+                  <h3 className="mb-1 font-bold text-gray-400">Creator</h3>
+                  <p className="text-sm truncate">{cryptoAddy}</p>
+                </div>
+              </div>
+              
+              <div className="mb-6">
+                <h3 className="mb-2 text-lg font-bold">Tags</h3>
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag, index) => (
+                    <span key={index} className="px-3 py-1 text-sm bg-gray-800 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="flex gap-3">
+                <button className="flex-1 py-3 font-bold text-white rounded-xl bg-gradient-to-r from-purple-500 to-pink-500">
+                  Collect Now
+                </button>
+                <button className="flex-1 py-3 font-bold text-white bg-gray-800 rounded-xl">
+                  Share
+                </button>
               </div>
             </div>
-            <button
-              onClick={toggleInfo}
-              className="w-full px-4 py-2 font-bold text-black bg-white rounded-full"
-              aria-label="Close Description"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
+// Bottom Navigation Bar Component
+const BottomNav = ({ activeTab, setActiveTab }) => {
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around p-3 bg-black border-t border-gray-800 backdrop-blur-md">
+      <button 
+        onClick={() => setActiveTab("home")} 
+        className={`flex flex-col items-center ${activeTab === "home" ? "text-white" : "text-gray-500"}`}
+      >
+        <FaHome className="text-xl" />
+        <span className="mt-1 text-xs">Home</span>
+      </button>
+      <button 
+        onClick={() => setActiveTab("discover")} 
+        className={`flex flex-col items-center ${activeTab === "discover" ? "text-white" : "text-gray-500"}`}
+      >
+        <FaSearch className="text-xl" />
+        <span className="mt-1 text-xs">Discover</span>
+      </button>
+      <button className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500">
+        <FaPlus className="text-white" />
+      </button>
+      <button 
+        onClick={() => setActiveTab("inbox")} 
+        className={`flex flex-col items-center ${activeTab === "inbox" ? "text-white" : "text-gray-500"}`}
+      >
+        <FaComment className="text-xl" />
+        <span className="mt-1 text-xs">Inbox</span>
+      </button>
+      <button 
+        onClick={() => setActiveTab("profile")} 
+        className={`flex flex-col items-center ${activeTab === "profile" ? "text-white" : "text-gray-500"}`}
+      >
+        <FaUser className="text-xl" />
+        <span className="mt-1 text-xs">Profile</span>
+      </button>
+    </div>
+  );
+};
+
+// Header Component
+const Header = () => {
+  return (
+    <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between p-4 bg-gradient-to-b from-black/70 to-transparent backdrop-blur-md">
+      <div className="flex items-center">
+        <div className="flex items-center justify-center w-10 h-10 mr-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500">
+          <FaGem className="text-lg text-white" />
+        </div>
+        <h1 className="text-xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
+          TWERK.DANCE
+        </h1>
+      </div>
+      <div className="flex items-center gap-4">
+        <button className="text-white">
+          <FaSearch className="text-xl" />
+        </button>
+        <button className="text-white">
+          <FaEllipsisH className="text-xl" />
+        </button>
+      </div>
+    </div>
+  );
+};
+
+// Main Reels Component
 const Reels = () => {
   const [currentReelIndex, setCurrentReelIndex] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
-  const [lovedVideos, setLovedVideos] = useState({}); // Renamed
+  const [lovedVideos, setLovedVideos] = useState({});
+  const [activeTab, setActiveTab] = useState("home");
+  const [showIntro, setShowIntro] = useState(true);
   const containerRef = useRef(null);
   const [touchStartY, setTouchStartY] = useState(0);
 
   const toggleMute = () => setIsMuted((prev) => !prev);
 
-  const handleLove = (id) => { // Renamed
-    setLovedVideos((prev) => ({ // Renamed
+  const handleLove = (id) => {
+    setLovedVideos((prev) => ({
       ...prev,
       [id]: !prev[id],
     }));
   };
 
   const handleShare = (id) => {
-      const shareUrl = `https://tv.jersey.fm/video/${id}`;
-      if (navigator.share) {
-          navigator.share({
-              title: "Check out this Jersey Club video!",
-              text: "If it goes viral, we will auction it.",
-              url: shareUrl,
-          })
-          .catch((err) => console.error("Share failed", err));
-      } else {
-          navigator.clipboard.writeText(shareUrl).then(() => {
-              alert("Link copied to clipboard!");
-          });
-      }
+    const shareUrl = `https://tv.jersey.fm/video/${id}`;
+    if (navigator.share) {
+      navigator.share({
+        title: "Check out this Jersey Club video!",
+        text: "If it goes viral, we will auction it.",
+        url: shareUrl,
+      })
+      .catch((err) => console.error("Share failed", err));
+    } else {
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        alert("Link copied to clipboard!");
+      });
+    }
   };
 
   const handleScroll = throttle(() => {
@@ -350,6 +599,11 @@ const Reels = () => {
         setCurrentReelIndex((prevIndex) => Math.max(prevIndex - 1, 0));
       }
     };
+    
+    const handleTouchStart = (e) => {
+      setTouchStartY(e.touches[0].clientY);
+    };
+    
     if (container) {
       container.addEventListener("scroll", handleScroll, { passive: true });
       container.addEventListener("touchstart", handleTouchStart, {
@@ -366,36 +620,46 @@ const Reels = () => {
     }
   }, [handleScroll, touchStartY]);
 
-  const handleTouchStart = (e) => {
-    setTouchStartY(e.touches[0].clientY);
-  };
+  if (showIntro) {
+    return <IntroScreen onGetStarted={() => setShowIntro(false)} />;
+  }
 
   return (
-    <div
-      ref={containerRef}
-      className="w-full h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth touch-pan-y"
-    >
-      {videolinks.map((reel, index) => (
-        <div key={reel.id} className="w-full h-screen snap-start">
-          <Reel
-            src={reel.src}
-            isPlaying={currentReelIndex === index}
-            isMuted={isMuted}
-            toggleMute={toggleMute}
-            onLove={() => handleLove(reel.id)} // Changed to handleLove
-            onShare={handleShare}
-            isLoved={lovedVideos[reel.id]} // Changed to isLoved
-            id={reel.id}
-            tags={reel.tags}
-            description={reel.description}
-            address={reel.address}
-            price={reel.price}
-            creator={reel.creator}
-            cryptoAddy={reel.cryptoAddy}
-            openSeaUrl={reel.openSeaUrl} // Pass the OpenSea URL
-          />
-        </div>
-      ))}
+    <div className="relative h-screen bg-black">
+      <Header />
+      
+      {/* Reels Container */}
+      <div
+        ref={containerRef}
+        className="w-full h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth touch-pan-y"
+      >
+        {videolinks.map((reel, index) => (
+          <div key={reel.id} className="w-full h-screen snap-start">
+            <Reel
+              src={reel.src}
+              isPlaying={currentReelIndex === index}
+              isMuted={isMuted}
+              toggleMute={toggleMute}
+              onLove={() => handleLove(reel.id)}
+              onShare={() => handleShare(reel.id)}
+              isLoved={lovedVideos[reel.id]}
+              id={reel.id}
+              tags={reel.tags}
+              description={reel.description}
+              price={reel.price}
+              creator={reel.creator}
+              cryptoAddy={reel.cryptoAddy}
+              openSeaUrl={reel.openSeaUrl}
+              likes={reel.likes}
+              comments={reel.comments}
+              shares={reel.shares}
+              creatorFollowers={reel.creatorFollowers}
+            />
+          </div>
+        ))}
+      </div>
+      
+      <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   );
 };
