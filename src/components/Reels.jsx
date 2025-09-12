@@ -17,10 +17,7 @@ import {
   FaVolumeMute,
   FaVolumeUp,
   FaFire,
-  FaCrown,
-  FaGem,
-  FaBookmark,
-  FaShoppingBag
+  FaCrown
 } from "react-icons/fa";
 import { track } from "@vercel/analytics";
 
@@ -30,7 +27,7 @@ const videolinks = [
     id: 1,
     tokenId: 0,
     dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
-    src: "https://ipfs.io/ipfs/bafybeid425wpltxblwhrk2dtfngpgn2g5ujncapeb7m5r3blu2m477ue4",
+    src: "https://ipfs.io/ipfs/bafybeid425wpltxblwhrk2dtfngpgn2g5ujncapeb7m5r3blu2m477ue4y",
     creator: "Stormiiy",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
     tags: ["🔥 Viral Reel", "💃 15 for sale", "🚀 Unlimited floor potential"],
@@ -61,7 +58,7 @@ const videolinks = [
   {
     id: 3,
     tokenId: 0,
-    dropContract: "0xYourDropContractAddressHere",
+    dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
     src: "https://ipfs.io/ipfs/bafybeic2322jgkppbahoclgrr7s5y5terk6lka4pojf46huqzpxdt64pju",
     creator: "PYT",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
@@ -77,7 +74,7 @@ const videolinks = [
     {
     id: 4,
     tokenId: 1,
-    dropContract: "0xYourDropContractAddressHere",
+    dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
     src: "https://ipfs.io/ipfs/bafybeie2eugkpwcuioagqsrgvlkn4azmhpad5qq4g4lxnfmtatba5sqkgy",
     creator: "Lexisoriya",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
@@ -92,7 +89,7 @@ const videolinks = [
   {
     id: 5,
     tokenId: 2,
-    dropContract: "0xYourDropContractAddressHere",
+    dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
     src: "https://ipfs.io/ipfs/bafybeicdweirwd5bsiw7xjqmdqwybsdr72s5fb2rrvsvor3veclx5pdzc4",
     creator: "Mapouka",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
@@ -118,17 +115,17 @@ const IntroScreen = ({ onGetStarted }) => {
       >
         <div className="flex items-center mb-6">
           <div className="flex items-center justify-center w-16 h-16 mr-3 rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500">
-            <FaGem className="text-2xl text-white" />
+            <img src="https://i.imgur.com/2Kln51a.png" alt="TWERK.DANCE Logo" className="w-10 h-10" />
           </div>
           <h1 className="text-4xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
             TWERK.DANCE
           </h1>
         </div>
         
-        <h2 className="mb-2 text-2xl font-bold text-center">Discover & Collect Exclusive Gemz</h2>
+        <h2 className="mb-2 text-2xl font-bold text-center">We made Twerking a Sport</h2>
         <p className="mb-8 text-center text-gray-300">
           Watch, like, and collect limited edition videos from your favorite Twerkrz. 
-          Own, Flip and Trade fiya twerkz on Base blockchain for real money.
+          Own 1-of-1 twerking vids you can flip in our Telegram group for 10x+ returns.
         </p>
         
         <div className="grid w-full grid-cols-3 gap-4 mb-8">
@@ -186,7 +183,6 @@ const Reel = ({
   const [animateHeart, setAnimateHeart] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [currentLikeCount, setCurrentLikeCount] = useState(likes);
-  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -327,37 +323,6 @@ const Reel = ({
           <span className="mt-1 text-xs font-bold text-white">{comments}</span>
         </div>
 
-        {/* Bookmark Button */}
-        <div className="flex flex-col items-center">
-          <motion.button 
-            whileTap={{ scale: 0.9 }}
-            onClick={() => setIsBookmarked(!isBookmarked)}
-            className="text-2xl text-white"
-          >
-            {isBookmarked ? (
-              <FaBookmark className="text-yellow-400 fill-current" />
-            ) : (
-              <FaBookmark />
-            )}
-          </motion.button>
-          <span className="mt-1 text-xs font-bold text-white">Save</span>
-        </div>
-
-        {/* Mint Button (OpenSea) */}
-        <div className="flex flex-col items-center">
-          <motion.a
-            whileTap={{ scale: 0.9 }}
-            href={openSeaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-2 text-2xl text-white rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
-            aria-label="Mint on OpenSea"
-          >
-            <FaShoppingBag />
-          </motion.a>
-          <span className="mt-1 text-xs font-bold text-white">Collect</span>
-        </div>
-        
         {/* Share Button */}
         <div className="flex flex-col items-center">
           <motion.button
@@ -372,6 +337,21 @@ const Reel = ({
             <FaShareAlt />
           </motion.button>
           <span className="mt-1 text-xs font-bold text-white">{shares}</span>
+        </div>
+
+        {/* Mint Button (OpenSea) */}
+        <div className="flex flex-col items-center">
+          <motion.a
+            whileTap={{ scale: 0.9 }}
+            href={openSeaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-2xl text-white rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
+            aria-label="Mint on OpenSea"
+          >
+            <FaEthereum />
+          </motion.a>
+          <span className="mt-1 text-xs font-bold text-white">Collect</span>
         </div>
 
         {/* Rotating Music Disc */}
@@ -420,9 +400,9 @@ const Reel = ({
               <div className="flex items-center mb-6">
                 <div className="flex items-center justify-center mr-4 rounded-full w-14 h-14 bg-gradient-to-tr from-purple-500 to-pink-500">
                   <img 
-                    src={`https://api.dicebear.com/7.x/adventurer/svg?seed=${creator}`} 
-                    alt={creator}
-                    className="w-12 h-12 rounded-full"
+                    src="https://i.imgur.com/2Kln51a.png" 
+                    alt="TWERK.DANCE Logo"
+                    className="w-10 h-10 rounded-full"
                   />
                 </div>
                 <div>
@@ -481,37 +461,46 @@ const Reel = ({
 const BottomNav = ({ activeTab, setActiveTab }) => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around p-3 bg-black border-t border-gray-800 backdrop-blur-md">
-      <button 
+      <a 
+        href="https://twerk.dance" 
         onClick={() => setActiveTab("home")} 
         className={`flex flex-col items-center ${activeTab === "home" ? "text-white" : "text-gray-500"}`}
       >
         <FaHome className="text-xl" />
         <span className="mt-1 text-xs">Home</span>
-      </button>
-      <button 
+      </a>
+      <a 
+        href="https://live.luvnft.com/" 
         onClick={() => setActiveTab("discover")} 
         className={`flex flex-col items-center ${activeTab === "discover" ? "text-white" : "text-gray-500"}`}
       >
         <FaSearch className="text-xl" />
-        <span className="mt-1 text-xs">Discover</span>
-      </button>
-      <button className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500">
+        <span className="mt-1 text-xs">Livestream</span>
+      </a>
+      <a 
+        href="/create" 
+        className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
+      >
         <FaPlus className="text-white" />
-      </button>
-      <button 
-        onClick={() => setActiveTab("inbox")} 
-        className={`flex flex-col items-center ${activeTab === "inbox" ? "text-white" : "text-gray-500"}`}
+      </a>
+      <a 
+        href="https://t.me/+1aj06-wtA1kyMzcx" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        onClick={() => setActiveTab("telegram")} 
+        className={`flex flex-col items-center ${activeTab === "telegram" ? "text-white" : "text-gray-500"}`}
       >
         <FaComment className="text-xl" />
-        <span className="mt-1 text-xs">Inbox</span>
-      </button>
-      <button 
+        <span className="mt-1 text-xs">Telegram Chat</span>
+      </a>
+      <a 
+        href="https://opensea.io/collection/twerk-dance" 
         onClick={() => setActiveTab("profile")} 
         className={`flex flex-col items-center ${activeTab === "profile" ? "text-white" : "text-gray-500"}`}
       >
         <FaUser className="text-xl" />
-        <span className="mt-1 text-xs">Profile</span>
-      </button>
+        <span className="mt-1 text-xs">Market</span>
+      </a>
     </div>
   );
 };
@@ -522,7 +511,7 @@ const Header = () => {
     <div className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between p-4 bg-gradient-to-b from-black/70 to-transparent backdrop-blur-md">
       <div className="flex items-center">
         <div className="flex items-center justify-center w-10 h-10 mr-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500">
-          <FaGem className="text-lg text-white" />
+          <img src="https://i.imgur.com/2Kln51a.png" alt="TWERK.DANCE Logo" className="w-8 h-8" />
         </div>
         <h1 className="text-xl font-bold text-transparent bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text">
           TWERK.DANCE
@@ -560,10 +549,10 @@ const Reels = () => {
   };
 
   const handleShare = (id) => {
-    const shareUrl = `https://tv.jersey.fm/video/${id}`;
+    const shareUrl = `https://tv.twerk.dance/video/${id}`;
     if (navigator.share) {
       navigator.share({
-        title: "Check out this Jersey Club video!",
+        title: "Catch this Twerkz video!",
         text: "If it goes viral, we will auction it.",
         url: shareUrl,
       })
