@@ -2,8 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* --- Global Styles --- */
-html {
+html, body {
   scroll-behavior: smooth;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -11,6 +14,27 @@ body {
   background-color: #000;
   color: white;
   overscroll-behavior: none;
+}
+
+/* --- Desktop Responsiveness --- */
+@media (min-width: 768px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #000;
+  }
+  
+  .reels-container {
+    width: 375px !important;
+    max-width: 375px !important;
+    height: 100vh !important;
+    margin: 0 auto !important;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
 }
 
 /* --- Scroll Snap --- */
@@ -26,10 +50,17 @@ body {
 .reels-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  position: relative;
 }
 
 .reels-container::-webkit-scrollbar {
   display: none;
+}
+
+/* Ensure each reel takes full height */
+.reel-item {
+  height: 100vh;
+  width: 100%;
 }
 
 /* --- Line Clamp Utility --- */
@@ -70,31 +101,13 @@ body {
   animation: fadeIn 0.5s ease-out;
 }
 
-/* --- Desktop Responsiveness --- */
-@media (min-width: 768px) {
-  .reels-container {
-    width: 375px; /* iPhone width */
-    margin: 0 auto;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
-  }
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #000;
-  }
-}
-
 /* --- Video Wall Styles --- */
 .video-wall {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
   padding: 2rem;
-  background-color: #f9f9f9; /* Light background */
+  background-color: #f9f9f9;
 }
 
 .video-item {
@@ -115,6 +128,84 @@ body {
   height: auto;
   display: block;
 }
+/* Force desktop responsiveness - add this to your CSS */
+@media (min-width: 768px) {
+  body {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+  
+  /* Target the specific container with multiple selectors for higher specificity */
+  .reels-container, 
+  div[class*="reels-container"],
+  div[ref][class*="reels-container"] {
+    width: 375px !important;
+    max-width: 375px !important;
+    height: 100vh !important;
+    margin: 0 auto !important;
+    border-left: 1px solid #333 !important;
+    border-right: 1px solid #333 !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
+    position: relative !important;
+    overflow-y: auto !important;
+  }
+  
+  /* Ensure videos maintain aspect ratio */
+  .reels-container video,
+  div[class*="reels-container"] video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  
+  /* Fix the parent container */
+  .relative.h-screen.bg-black {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
 
-/* --- TikTok-like UI Improvements --- */
-/* Already included above, merged for clarity */
+/* Mobile styles */
+@media (max-width: 767px) {
+  .reels-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+/* Desktop Responsiveness */
+@media (min-width: 768px) {
+  body {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+  
+  .reels-container {
+    width: 375px !important;
+    max-width: 375px !important;
+    height: 100vh !important; /* Let CSS control the height */
+    margin: 0 auto !important;
+    border-left: 1px solid #333 !important;
+    border-right: 1px solid #333 !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) !important;
+    position: relative !important;
+    overflow-y: auto !important; /* Ensure scrolling works */
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+  .reels-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100vh !important;
+  }
+}
