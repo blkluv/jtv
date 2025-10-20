@@ -25,11 +25,11 @@ const videolinks = [
     dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
     src: "https://ipfs.io/ipfs/bafybeid425wpltxblwhrk2dtfngpgn2g5ujncapeb7m5r3blu2m477ue4y",
     creator: "Stormiiy",
-    cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
-    memeCoinUrl: "https://dexscreener.com/base/0x123456789", // Tipping link
+    cryptoAddy: "0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
+    memeCoinUrl: "https://thirdweb.com/base/0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241", // Tipping link
     tags: ["🔥 Viral Reel", "💃 15 for sale", "🚀 Unlimited floor potential"],
     description: "🔥 Classic Stormiiy twerk video. If you own this NFT, you'll get exclusive access to my live streams!",
-    price: "0.003 ETH",
+    price: "0.13 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/1",
     likes: 1245,
     comments: 132,
@@ -46,7 +46,7 @@ const videolinks = [
     memeCoinUrl: "https://dexscreener.com/base/0x234567890", // Tipping link
     tags: ["🔥 Viral Reel", "💃 15 for sale", "🚀 Unlimited floor potential"],
     description: "🔥 Shake Sum - Exclusive content for NFT holders only!",
-    price: "0.003 ETH",
+    price: "0.13 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/2",
     likes: 1189,
     comments: 121,
@@ -61,9 +61,9 @@ const videolinks = [
     creator: "PYT",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
     memeCoinUrl: "https://dexscreener.com/base/0x345678901", // Tipping link
-    tags: ["🔥 Viral Reel", "💃 1 for sale"],
+    tags: ["🔥 Viral Reel", "💃 15 for sale"],
     description: "🔥 Get this PYT on livestream by holding her GEM. Limited edition!",
-    price: "0.003 ETH",
+    price: "0.13 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/3",
     likes: 2312,
     comments: 245,
@@ -77,10 +77,10 @@ const videolinks = [
     src: "https://ipfs.io/ipfs/bafybeie2eugkpwcuioagqsrgvlkn4azmhpad5qq4g4lxnfmtatba5sqkgy",
     creator: "Lexisoriya",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
-    memeCoinUrl: "https://dexscreener.com/base/0x456789012", // Tipping link
-    tags: ["🔥 Viral Reel", "💃 1 for sale"],
+    memeCoinUrl: "https://thirdweb.com/base/0x709A4985926685b1e24A7167170656B3df489F68",  
+    tags: ["🔥 Viral Reel", "💃 15 for sale"],
     description: "🔥 Become of 1 of 15 Gemologist to own this classic Lexisoriya reel.",
-    price: "0.003 ETH",
+    price: "0.13 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x1308eb43152209f1da697f89c3b2c6a4766dc371/2",
     likes: 421,
     comments: 67,
@@ -97,11 +97,45 @@ const videolinks = [
     memeCoinUrl: "https://dexscreener.com/base/0x567890123", // Tipping link
     tags: ["💃 15 for sale", "🔥 Viral Reel"],
     description: "💃 Own and pump the health benefits of Twerking aka Mapouka",
-    price: "0.0003 ETH",
+    price: "0.13 ETH",
     openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/5",
     likes: 156,
     comments: 18,
     shares: 6,
+    creatorFollowers: "18K"
+  },
+    {
+    id: 6,
+    tokenId: 2,
+    dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
+    src: "https://raw2.seadn.io/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/5c942a7802b8df4611a950d9cb74a7/2f5c942a7802b8df4611a950d9cb74a7.mov",
+    creator: "Stormiiy Cheetah",
+    cryptoAddy: "0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
+    memeCoinUrl: "https://thirdweb.com/base/0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241", // Tipping link
+    tags: ["💃 1 of 1", "🔥 Viral Reel"],
+    description: "💃 Own the 1 of 1 Stormiiy Cheetah",
+    price: "0.13 ETH",
+    openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/6",
+    likes: 156,
+    comments: 18,
+    shares: 6,
+    creatorFollowers: "18K"
+  },
+    {
+    id: 7,
+    tokenId: 2,
+    dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
+    src: "https://raw2.seadn.io/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/af8aa8976cac87f2415c19e7a5cd3f/f6af8aa8976cac87f2415c19e7a5cd3f.mov",
+    creator: "Saleemarrm",
+    cryptoAddy: "0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
+    memeCoinUrl: "https://thirdweb.com/base/0x8a7833905E62CFa68b5F02aCd2b0c68a78119973", // Tipping link
+    tags: ["💃 1 of 1", "🔥 Viral Reel"],
+    description: "💃 Own a 1 of 1 Saleemarrm Position NFT.",
+    price: "0.13 ETH",
+    openSeaUrl: "https://opensea.io/item/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/7",
+    likes: 18,
+    comments: 0,
+    shares: 12,
     creatorFollowers: "18K"
   }
 ];
@@ -430,7 +464,7 @@ const BottomNav = ({ activeTab, setActiveTab }) => {
         className={`flex flex-col items-center ${activeTab === "home" ? "text-white" : "text-gray-500"}`}
       >
         <FaHome className="text-xl" />
-        <span className="mt-1 text-xs">Home</span>
+        <span className="mt-1 text-xs">HOME</span>
       </a>
       <a 
         href="https://opensea.io/collection/twerk-dance" 
@@ -438,13 +472,13 @@ const BottomNav = ({ activeTab, setActiveTab }) => {
         className={`flex flex-col items-center ${activeTab === "discover" ? "text-white" : "text-gray-500"}`}
       >
         <FaEthereum className="text-xl" />
-        <span className="mt-1 text-xs">OpenSea Shop</span>
+        <span className="mt-1 text-xs">OPENSEA MARKET</span>
       </a>
       <a 
         href="https://live.luvnft.com/" 
         className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
       >
-        <span className="mt-1 text-xs">Live</span>
+        <span className="mt-1 text-xs">LIVE</span>
       </a>
       <a 
         href="https://t.me/+1aj06-wtA1kyMzcx" 
@@ -454,15 +488,15 @@ const BottomNav = ({ activeTab, setActiveTab }) => {
         className={`flex flex-col items-center ${activeTab === "telegram" ? "text-white" : "text-gray-500"}`}
       >
         <FaComment className="text-xl" />
-        <span className="mt-1 text-xs">Telegram</span>
+        <span className="mt-1 text-xs">TELEGRAM</span>
       </a>
       <a 
-        href="https://gemz.twerk.dance" 
+        href="https://app.luvnft.com/groups/twerk-dance/" 
         onClick={() => setActiveTab("profile")} 
         className={`flex flex-col items-center ${activeTab === "profile" ? "text-white" : "text-gray-500"}`}
       >
         <FaUser className="text-xl" />
-        <span className="mt-1 text-xs">GEMZ Shop</span>
+        <span className="mt-1 text-xs">LUV NFT GROUP</span>
       </a>
     </div>
   );
@@ -506,11 +540,11 @@ const Reels = () => {
   };
 
   const handleShare = (id) => {
-    const shareUrl = `https://tv.twerk.dance/video/${id}`;
+    const shareUrl = `https://twerk.dance/video/${id}`;
     if (navigator.share) {
       navigator.share({
-        title: "Catch this Twerkz video!",
-        text: "If it goes viral, we will auction it.",
+        title: "TWERK.DANCE",
+        text: "We made twerking a paid sport! Check out this reel on TWERK.DANCE",
         url: shareUrl,
       })
       .catch((err) => console.error("Share failed", err));
