@@ -1,4 +1,5 @@
 import React from "react";
+import { Analytics } from "@vercel/analytics/react";
 import Reels from "./components/Reels";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -9,6 +10,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <Reels />
+        <Analytics />
       </div>
     </QueryClientProvider>
   );

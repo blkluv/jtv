@@ -320,12 +320,21 @@ const Reel = ({
         </div>
 
         {/* Comment Button */}
-        <div className="flex flex-col items-center">
-          <motion.button whileTap={{ scale: 0.9 }} className="text-3xl text-white" aria-label="Comments">
-            <FaComment />
-          </motion.button>
-          <span className="mt-1 text-xs font-bold text-white">{comments}</span>
-        </div>
+<div className="flex flex-col items-center">
+  <motion.button
+    whileTap={{ scale: 0.9 }}
+    onClick={() => {
+      window.open("https://app.luvnft.com/groups/twerk-dance/", "_blank", "noopener,noreferrer");
+      track("open_comments", { reelId: id }); // optional analytics
+    }}
+    className="text-3xl text-white"
+    aria-label="Join conversation"
+  >
+    <FaComment />
+  </motion.button>
+  <span className="mt-1 text-xs font-bold text-white">{comments}</span>
+</div>
+
 
         {/* Share Button */}
         <div className="flex flex-col items-center">
