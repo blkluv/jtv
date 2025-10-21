@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa";
 import { track } from "@vercel/analytics";
 
-// Sample data with memeCoinUrl for tipping
+// Sample data with memeCoinUrl for tipping + memeCoinName (and optional memeCoinLogo)
 const videolinks = [
   {
     id: 1,
@@ -25,8 +25,10 @@ const videolinks = [
     dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
     src: "https://ipfs.io/ipfs/bafybeid425wpltxblwhrk2dtfngpgn2g5ujncapeb7m5r3blu2m477ue4y",
     creator: "Stormiiy",
+    memeCoinName: "$STORM",
+    // memeCoinLogo: "https://your-cdn.com/storm.png",
     cryptoAddy: "0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
-    memeCoinUrl: "https://thirdweb.com/base/0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241", // Tipping link
+    memeCoinUrl: "https://thirdweb.com/base/0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
     tags: ["🔥 Viral Reel", "💃 15 for sale", "🚀 Unlimited floor potential"],
     description: "🔥 Classic Stormiiy twerk video. If you own this NFT, you'll get exclusive access to my live streams!",
     price: "0.13 ETH",
@@ -42,8 +44,10 @@ const videolinks = [
     dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
     src: "https://ipfs.io/ipfs/bafybeig2zo5wa2oe6o627g2fdjzob5zzkkoso6vpehlmggl6c2mq6olude",
     creator: "Jelly",
+    memeCoinName: "$JELLY",
+    // memeCoinLogo: "https://your-cdn.com/jelly.png",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
-    memeCoinUrl: "https://dexscreener.com/base/0x234567890", // Tipping link
+    memeCoinUrl: "https://dexscreener.com/base/0x234567890",
     tags: ["🔥 Viral Reel", "💃 15 for sale", "🚀 Unlimited floor potential"],
     description: "🔥 Shake Sum - Exclusive content for NFT holders only!",
     price: "0.13 ETH",
@@ -59,8 +63,10 @@ const videolinks = [
     dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
     src: "https://ipfs.io/ipfs/bafybeic2322jgkppbahoclgrr7s5y5terk6lka4pojf46huqzpxdt64pju",
     creator: "PYT",
+    memeCoinName: "$PYT",
+    // memeCoinLogo: "https://your-cdn.com/pyt.png",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
-    memeCoinUrl: "https://dexscreener.com/base/0x345678901", // Tipping link
+    memeCoinUrl: "https://dexscreener.com/base/0x345678901",
     tags: ["🔥 Viral Reel", "💃 15 for sale"],
     description: "🔥 Get this PYT on livestream by holding her GEM. Limited edition!",
     price: "0.13 ETH",
@@ -76,8 +82,10 @@ const videolinks = [
     dropContract: "0x1308eb43152209f1da697f89c3b2c6a4766dc371",
     src: "https://ipfs.io/ipfs/bafybeie2eugkpwcuioagqsrgvlkn4azmhpad5qq4g4lxnfmtatba5sqkgy",
     creator: "Lexisoriya",
+    memeCoinName: "$LEXI",
+    // memeCoinLogo: "https://your-cdn.com/lexi.png",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
-    memeCoinUrl: "https://thirdweb.com/base/0x709A4985926685b1e24A7167170656B3df489F68",  
+    memeCoinUrl: "https://thirdweb.com/base/0x709A4985926685b1e24A7167170656B3df489F68",
     tags: ["🔥 Viral Reel", "💃 15 for sale"],
     description: "🔥 Become of 1 of 15 Gemologist to own this classic Lexisoriya reel.",
     price: "0.13 ETH",
@@ -93,8 +101,10 @@ const videolinks = [
     dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
     src: "https://ipfs.io/ipfs/bafybeicdweirwd5bsiw7xjqmdqwybsdr72s5fb2rrvsvor3veclx5pdzc4",
     creator: "Mapouka",
+    memeCoinName: "$MAPOUKA",
+    // memeCoinLogo: "https://your-cdn.com/mapouka.png",
     cryptoAddy: "0x8F3b48431FA3d9b92ff7157E890105F9B5f96089",
-    memeCoinUrl: "https://dexscreener.com/base/0x567890123", // Tipping link
+    memeCoinUrl: "https://dexscreener.com/base/0x567890123",
     tags: ["💃 15 for sale", "🔥 Viral Reel"],
     description: "💃 Own and pump the health benefits of Twerking aka Mapouka",
     price: "0.13 ETH",
@@ -104,14 +114,16 @@ const videolinks = [
     shares: 6,
     creatorFollowers: "18K"
   },
-    {
+  {
     id: 6,
     tokenId: 2,
     dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
     src: "https://raw2.seadn.io/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/5c942a7802b8df4611a950d9cb74a7/2f5c942a7802b8df4611a950d9cb74a7.mov",
     creator: "Stormiiy Cheetah",
+    memeCoinName: "$STORM",
+    // memeCoinLogo: "https://your-cdn.com/cheetah.png",
     cryptoAddy: "0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
-    memeCoinUrl: "https://thirdweb.com/base/0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241", // Tipping link
+    memeCoinUrl: "https://thirdweb.com/base/0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
     tags: ["💃 1 of 1", "🔥 Viral Reel"],
     description: "💃 Own the 1 of 1 Stormiiy Cheetah",
     price: "0.13 ETH",
@@ -121,14 +133,16 @@ const videolinks = [
     shares: 6,
     creatorFollowers: "18K"
   },
-    {
+  {
     id: 7,
     tokenId: 2,
     dropContract: "0x580395f7ecb966d352e3948b96ecf1e475526e70",
     src: "https://raw2.seadn.io/base/0x580395f7ecb966d352e3948b96ecf1e475526e70/af8aa8976cac87f2415c19e7a5cd3f/f6af8aa8976cac87f2415c19e7a5cd3f.mov",
     creator: "Saleemarrm",
+    memeCoinName: "$SALE",
+    // memeCoinLogo: "https://your-cdn.com/saleem.png",
     cryptoAddy: "0x52B422783b8f4fe7AbFE497d15F1EC0079Ea2241",
-    memeCoinUrl: "https://thirdweb.com/base/0x8a7833905E62CFa68b5F02aCd2b0c68a78119973", // Tipping link
+    memeCoinUrl: "https://thirdweb.com/base/0x8a7833905E62CFa68b5F02aCd2b0c68a78119973",
     tags: ["💃 1 of 1", "🔥 Viral Reel"],
     description: "💃 Own a 1 of 1 Saleemarrm Position NFT.",
     price: "0.13 ETH",
@@ -156,6 +170,8 @@ const Reel = ({
   creator,
   cryptoAddy,
   memeCoinUrl,
+  memeCoinName,
+  memeCoinLogo,
   openSeaUrl,
   likes,
   comments,
@@ -181,21 +197,14 @@ const Reel = ({
   const handleLoveClick = () => {
     const newLikedState = !isLoved;
     onLove();
-    
-    if (newLikedState) {
-      setCurrentLikeCount(prev => prev + 1);
-    } else {
-      setCurrentLikeCount(prev => prev - 1);
-    }
-    
+
+    setCurrentLikeCount((prev) => prev + (newLikedState ? 1 : -1));
     setAnimateHeart(true);
     setTimeout(() => setAnimateHeart(false), 1000);
     track("love", { reelId: id });
   };
 
-  const toggleInfo = () => {
-    setShowDescription(!showDescription);
-  };
+  const toggleInfo = () => setShowDescription(!showDescription);
 
   const getPriceDisplay = () => {
     if (typeof price === "string") return price;
@@ -214,13 +223,14 @@ const Reel = ({
         muted={isMuted}
         playsInline
         onClick={toggleMute}
-        aria-label="Reel Video"
+        loading="lazy"
+        aria-label={`${creator}'s Reel`}
       />
-      
+
       {/* Gradient Overlays */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
-      
+
       {/* Mute Indicator */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -235,6 +245,14 @@ const Reel = ({
         <div className="mb-3">
           <h3 className="text-lg font-bold">@{creator}</h3>
           <p className="text-sm line-clamp-2">{description}</p>
+          {/* Improve discoverability of details */}
+          <button
+            onClick={toggleInfo}
+            className="mt-2 text-xs font-semibold underline text-white/80 underline-offset-4"
+            aria-label="Show details"
+          >
+            More
+          </button>
         </div>
         
         <div className="flex flex-wrap gap-2 mb-4">
@@ -262,19 +280,26 @@ const Reel = ({
 
       {/* Right Sidebar Actions */}
       <div className="absolute z-10 flex flex-col items-center gap-5 right-4 bottom-24">
-        {/* Tipping Button - Replaced avatar and plus sign */}
+        {/* Tipping Button - Custom memecoin label */}
         <div className="flex flex-col items-center">
           <motion.a
             whileTap={{ scale: 0.9 }}
             href={memeCoinUrl}
             target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-emerald-500"
-            aria-label={`Tip ${creator}`}
+            rel="nofollow noopener noreferrer"
+            className="flex items-center justify-center w-12 h-12 transition-transform rounded-full shadow-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-110"
+            aria-label={`Send ${memeCoinName || "a tip"} to ${creator}`}
+            title={`Support ${creator}${memeCoinName ? ` with ${memeCoinName}` : ""}`}
           >
-            <FaDollarSign className="text-lg text-white" />
+            {memeCoinLogo ? (
+              <img src={memeCoinLogo} alt={memeCoinName} className="w-6 h-6 rounded-full" />
+            ) : (
+              <FaDollarSign className="text-lg text-white" />
+            )}
           </motion.a>
-          <span className="mt-1 text-xs font-bold text-white">Tip {creator}</span>
+          <span className="mt-1 text-xs font-bold text-white">
+            {memeCoinName || `Tip ${creator}`}
+          </span>
         </div>
 
         {/* Like Button */}
@@ -296,7 +321,7 @@ const Reel = ({
 
         {/* Comment Button */}
         <div className="flex flex-col items-center">
-          <motion.button whileTap={{ scale: 0.9 }} className="text-3xl text-white">
+          <motion.button whileTap={{ scale: 0.9 }} className="text-3xl text-white" aria-label="Comments">
             <FaComment />
           </motion.button>
           <span className="mt-1 text-xs font-bold text-white">{comments}</span>
@@ -324,9 +349,9 @@ const Reel = ({
             whileTap={{ scale: 0.9 }}
             href={openSeaUrl}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener noreferrer"
             className="p-2 text-2xl text-white rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
-            aria-label="Mint on OpenSea"
+            aria-label="Collect on OpenSea"
           >
             <FaEthereum />
           </motion.a>
@@ -355,101 +380,101 @@ const Reel = ({
         </motion.div>
       )}
 
-{/* Description Overlay */}
-<AnimatePresence>
-  {showDescription && (
-    <motion.div 
-      className="absolute inset-0 z-30 p-6 overflow-y-auto bg-black/95"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <div className="text-white">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold">Video Details</h2>
-          <button
-            onClick={toggleInfo}
-            className="p-2 rounded-full bg-white/10"
-            aria-label="Close Description"
+      {/* Description Overlay */}
+      <AnimatePresence>
+        {showDescription && (
+          <motion.div 
+            className="absolute inset-0 z-30 p-6 overflow-y-auto bg-black/95"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <FaChevronDown />
-          </button>
-        </div>
-        
-        <div className="flex items-center mb-6">
-          <div className="flex items-center justify-center mr-4 rounded-full w-14 h-14 bg-gradient-to-tr from-purple-500 to-pink-500">
-            <img 
-              src="https://i.imgur.com/2Kln51a.png" 
-              alt="TWERK.DANCE Logo"
-              className="w-10 h-10 rounded-full"
-            />
-          </div>
-          <div>
-            <h3 className="text-lg font-bold">@{creator}</h3>
-            <p className="text-gray-300">{creatorFollowers} followers</p>
-          </div>
-          <button className="px-4 py-1 ml-auto text-sm font-semibold text-black bg-white rounded-full">
-            Follow
-          </button>
-        </div>
-        
-        <div className="mb-6">
-          <h3 className="mb-2 text-lg font-bold">Description</h3>
-          <p className="text-gray-300">{description}</p>
-        </div>
-        
-        <div className="grid grid-cols-2 gap-4 mb-6">
-          <div className="p-4 bg-gray-800/50 rounded-xl">
-            <h3 className="mb-1 font-bold text-gray-400">Price</h3>
-            <p className="text-lg">{getPriceDisplay()}</p>
-          </div>
-          <div className="p-4 bg-gray-800/50 rounded-xl">
-            <h3 className="mb-1 font-bold text-gray-400">Creator</h3>
-            <p className="text-sm truncate">{cryptoAddy}</p>
-          </div>
-        </div>
+            <div className="text-white">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-bold">Video Details</h2>
+                <button
+                  onClick={toggleInfo}
+                  className="p-2 rounded-full bg-white/10"
+                  aria-label="Close Description"
+                >
+                  <FaChevronDown />
+                </button>
+              </div>
+              
+              <div className="flex items-center mb-6">
+                <div className="flex items-center justify-center mr-4 rounded-full w-14 h-14 bg-gradient-to-tr from-purple-500 to-pink-500">
+                  <img 
+                    src="https://i.imgur.com/2Kln51a.png" 
+                    alt="TWERK.DANCE Logo"
+                    className="w-10 h-10 rounded-full"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">@{creator}</h3>
+                  <p className="text-gray-300">{creatorFollowers} followers</p>
+                </div>
+                <button className="px-4 py-1 ml-auto text-sm font-semibold text-black bg-white rounded-full">
+                  Follow
+                </button>
+              </div>
+              
+              <div className="mb-6">
+                <h3 className="mb-2 text-lg font-bold">Description</h3>
+                <p className="text-gray-300">{description}</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="p-4 bg-gray-800/50 rounded-xl">
+                  <h3 className="mb-1 font-bold text-gray-400">Price</h3>
+                  <p className="text-lg">{getPriceDisplay()}</p>
+                </div>
+                <div className="p-4 bg-gray-800/50 rounded-xl">
+                  <h3 className="mb-1 font-bold text-gray-400">Creator</h3>
+                  <p className="text-sm truncate">{cryptoAddy}</p>
+                </div>
+              </div>
 
-        <div className="p-4 mb-6 bg-gray-800/50 rounded-xl">
-          <h3 className="mb-2 font-bold text-gray-400">Support Creator</h3>
-          <a 
-            href={memeCoinUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center py-2 mt-2 text-white rounded-lg bg-gradient-to-r from-green-500 to-emerald-500"
-          >
-            <FaDollarSign className="mr-2" />
-            Buy {creator} Memecoin
-          </a>
-        </div>
-        
-        <div className="mb-6">
-          <h3 className="mb-2 text-lg font-bold">Tags</h3>
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag, index) => (
-              <span key={index} className="px-3 py-1 text-sm bg-gray-800 rounded-full">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-        
-        <div className="flex gap-3">
-          <a
-            href={openSeaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 py-3 font-bold text-center text-white rounded-xl bg-gradient-to-r from-purple-500 to-pink-500"
-          >
-            Collect Now
-          </a>
-          <button className="flex-1 py-3 font-bold text-white bg-gray-800 rounded-xl">
-            Share
-          </button>
-        </div>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+              <div className="p-4 mb-6 bg-gray-800/50 rounded-xl">
+                <h3 className="mb-2 font-bold text-gray-400">Support Creator</h3>
+                <a 
+                  href={memeCoinUrl} 
+                  target="_blank" 
+                  rel="nofollow noopener noreferrer"
+                  className="flex items-center justify-center py-2 mt-2 text-white transition-transform rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 hover:scale-105"
+                >
+                  <FaDollarSign className="mr-2" />
+                  Buy {memeCoinName || `${creator} Memecoin`}
+                </a>
+              </div>
+              
+              <div className="mb-6">
+                <h3 className="mb-2 text-lg font-bold">Tags</h3>
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag, index) => (
+                    <span key={index} className="px-3 py-1 text-sm bg-gray-800 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="flex gap-3">
+                <a
+                  href={openSeaUrl}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="flex-1 py-3 font-bold text-center text-white rounded-xl bg-gradient-to-r from-purple-500 to-pink-500"
+                >
+                  Collect Now
+                </a>
+                <button className="flex-1 py-3 font-bold text-white bg-gray-800 rounded-xl">
+                  Share
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -518,8 +543,6 @@ const Header = () => {
     </div>
   );
 };
-
-
 
 // Main Reels Component
 const Reels = () => {
@@ -657,6 +680,8 @@ const Reels = () => {
               creator={reel.creator}
               cryptoAddy={reel.cryptoAddy}
               memeCoinUrl={reel.memeCoinUrl}
+              memeCoinName={reel.memeCoinName}
+              memeCoinLogo={reel.memeCoinLogo}
               openSeaUrl={reel.openSeaUrl}
               likes={reel.likes}
               comments={reel.comments}
